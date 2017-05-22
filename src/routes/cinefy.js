@@ -1,11 +1,13 @@
+"use strict";
+
 const express = require("express");
 const https = require("https");
 const router = express.Router();
-
+const config = require("../config");
 
 router.get("/:query", function (req, res, next) {
 
-    doGETRequest(`https://www.omdbapi.com/?t=${req.params.query}&apikey=36f3d30d`, (error, movie) => {
+    doGETRequest(`https://www.omdbapi.com/?t=${req.params.query}&apikey=${config.omdbKey}`, (error, movie) => {
         if (error) {
             return next(error);
         } else if (movie.Response === "False") {
