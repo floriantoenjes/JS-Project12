@@ -30,7 +30,7 @@ router.get("/:query", function (req, res, next) {
 
 function doGETRequest(url, callback) {
     const request = https.get(url, (response) => {
-        if (response.statusCode == 200) {
+        if (response.statusCode === 200) {
             let rawdata = "";
             response.on("data", (chunk) => {
                 rawdata += chunk;

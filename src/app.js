@@ -8,7 +8,6 @@ const cinefyRoutes = require("./routes/cinefy");
 
 const app = express();
 
-
 app.set("port", process.env.PORT || 5000);
 
 app.use(morgan("dev"));
