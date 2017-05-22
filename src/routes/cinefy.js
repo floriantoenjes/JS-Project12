@@ -42,7 +42,7 @@ function doGETRequest(url, callback) {
                 }
             });
         } else {
-            const error = new Error("There was an error doing an HTTPS GET request");
+            const error = new Error("There was an error doing a HTTPS GET request");
             error.status = response.statusCode;
             callback(error);
         }
