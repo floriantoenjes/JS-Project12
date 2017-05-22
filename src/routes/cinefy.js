@@ -29,7 +29,7 @@ function doGETRequest(url, callback) {
                 }
             });
         } else {
-            const error = new Error("There was an error doing a GET request");
+            const error = new Error("There was an error during an HTTP GET request");
             error.status = response.statusCode;
             callback(error);
         }
