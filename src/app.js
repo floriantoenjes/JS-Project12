@@ -11,7 +11,7 @@ app.set("port", process.env.PORT || 5000);
 
 app.use(morgan("dev"));
 
-app.use("/", cinefyRoutes);
+app.use("/api/v1/cinefy", cinefyRoutes);
 
 const server = app.listen(app.get("port"), function () {
     console.log("Express server listening on port " + server.address().port);

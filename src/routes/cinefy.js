@@ -5,17 +5,20 @@ const router = express.Router();
 
 router.get("/:query", function (req, res, next) {
 
-    doGETRequest(`https://www.omdbapi.com/?t=${req.params.query}&apikey=36f3d30d`, function (error, movie) {
+    doGETRequest(`https://www.omdbapi.com/?t=${req.params.query}&apikey=36f3d30d`, (error, movie) => {
         if (error) {
             next(error);
         }
 
-        doGETRequest(`https://api.spotify.com/v1/search?q=${movie.Title}&type=album`, function (error, soundtrack) {
+        doGETRequest(`https://api.spotify.com/v1/search?q=${movie.Title}&type=album`, (error, soundtracks) => {
             if (error) {
                 next(error);
             }
 
-            res.json(soundtrack);
+            res.json({
+                movie: movie,
+                soundtracks: soundtracks
+            });
         });
 
     });
