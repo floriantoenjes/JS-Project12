@@ -6,10 +6,11 @@ const router = express.Router();
 router.get("/:query", function (req, res, next) {
 
     doGETRequest(`http://www.omdbapi.com/?t=${req.params.query}&apikey=36f3d30d`, function (error, result) {
-        console.log(result);
+        if (error) {
+            next(error);
+        }
+        res.json(result);
     });
-
-    res.send("Hello World!");
 });
 
 function doGETRequest(url, callback) {
