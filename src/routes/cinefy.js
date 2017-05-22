@@ -1,20 +1,28 @@
 const express = require("express");
-const http = require("http");
+const https = require("https");
 const router = express.Router();
 
 
 router.get("/:query", function (req, res, next) {
 
-    doGETRequest(`http://www.omdbapi.com/?t=${req.params.query}&apikey=36f3d30d`, function (error, result) {
+    doGETRequest(`https://www.omdbapi.com/?t=${req.params.query}&apikey=36f3d30d`, function (error, movie) {
         if (error) {
             next(error);
         }
-        res.json(result);
+
+        doGETRequest(`https://api.spotify.com/v1/search?q=${movie.Title}&type=album`, function (error, soundtrack) {
+            if (error) {
+                next(error);
+            }
+
+            res.json(soundtrack);
+        });
+
     });
 });
 
 function doGETRequest(url, callback) {
-    const request = http.get(url, (response) => {
+    const request = https.get(url, (response) => {
         if (response.statusCode == 200) {
             let rawdata = "";
             response.on("data", (chunk) => {
@@ -29,7 +37,7 @@ function doGETRequest(url, callback) {
                 }
             });
         } else {
-            const error = new Error("There was an error during an HTTP GET request");
+            const error = new Error("There was an error during an HTTPS GET request");
             error.status = response.statusCode;
             callback(error);
         }
