@@ -12,7 +12,7 @@ router.get("/:query", function (req, res, next) {
             return next();
         }
 
-        doGETRequest(`https://api.spotify.com/v1/search?q=${movie.Title}&type=album`, (error, soundtracks) => {
+        doGETRequest(`https://api.spotify.com/v1/search?q=${movie.Title}&type=album&limit=5&offset=0`, (error, soundtracks) => {
             if (error) {
                 return next(error);
             }
