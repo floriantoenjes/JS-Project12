@@ -7,12 +7,14 @@ router.get("/:query", function (req, res, next) {
 
     doGETRequest(`https://www.omdbapi.com/?t=${req.params.query}&apikey=36f3d30d`, (error, movie) => {
         if (error) {
-            next(error);
+            return next(error);
+        } else if (movie.Response === "False") {
+            return next();
         }
 
         doGETRequest(`https://api.spotify.com/v1/search?q=${movie.Title}&type=album`, (error, soundtracks) => {
             if (error) {
-                next(error);
+                return next(error);
             }
 
             res.json({
