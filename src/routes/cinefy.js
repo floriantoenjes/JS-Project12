@@ -5,7 +5,15 @@ const router = express.Router();
 
 router.get("/:query", function (req, res, next) {
 
-    const request = http.get(`http://www.omdbapi.com/?t=${req.params.query}&apikey=36f3d30d`, (response) => {
+    doGETRequest(`http://www.omdbapi.com/?t=${req.params.query}&apikey=36f3d30d`, function (error, result) {
+        console.log(result);
+    });
+
+    res.send("Hello World!");
+});
+
+function doGETRequest(url, callback) {
+    const request = http.get(url, (response) => {
         if (response.statusCode == 200) {
             let rawdata = "";
             response.on("data", (chunk) => {
@@ -14,22 +22,20 @@ router.get("/:query", function (req, res, next) {
             response.on("end", () => {
                 try {
                     let result = JSON.parse(rawdata);
-                    console.log(result);
+                    callback(null, result);
                 } catch (error) {
-                    return next(error);
+                    callback(error);
                 }
             });
         } else {
-            const error = new Error("There was an error fetching data from OMDb");
+            const error = new Error("There was an error doing a GET request");
             error.status = response.statusCode;
-            return next(error);
+            callback(error);
         }
     });
     request.on("error", (error) => {
-        return next(error);
+        callback(error);
     });
-
-    res.send("Hello World!");
-});
+}
 
 module.exports = router;
