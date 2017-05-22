@@ -12,7 +12,7 @@ app.set("port", process.env.PORT || 5000);
 
 app.use(morgan("dev"));
 
-app.use("/", express.static("../public"));
+app.use("/", express.static("public"));
 
 app.use("/api/v1/cinefy", cinefyRoutes);
 
