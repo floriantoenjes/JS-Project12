@@ -1,0 +1,15 @@
+{
+  "name": "cinefy",
+  "version": "0.0.1",
+  "description": "Search movie soundtracks through spotify",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Florian Tönjes",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3",
+    "morgan": "^1.8.1"
+  }
+}
