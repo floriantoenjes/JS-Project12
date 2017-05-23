@@ -13,6 +13,9 @@ function config($routeProvider) {
        controller: "LoginController",
         controllerAs: "vm",
         templateUrl: "templates/login.html"
+    })
+    .otherwise({
+        redirectTo: "/"
     });
 
 }
