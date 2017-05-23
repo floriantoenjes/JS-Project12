@@ -1,6 +1,7 @@
 "use strict";
 
 const express = require("express");
+const mongoose = require("mongoose");
 const morgan = require("morgan");
 const path = require("path");
 
@@ -8,6 +9,17 @@ const cinefyRoutes = require("./routes/cinefy");
 
 
 const app = express();
+
+mongoose.connect("mongodb://localhost:27017/cinefy");
+const db = mongoose.connection;
+
+db.on("error", function (error) {
+    console.error("Connection error:", error);
+});
+
+db.on("open", function () {
+    console.log("Database connection successful");
+});
 
 app.set("port", process.env.PORT || 5000);
 
