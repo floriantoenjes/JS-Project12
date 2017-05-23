@@ -1,3 +1,4 @@
+const config = require("../config");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 
@@ -41,7 +42,7 @@ UserSchema.methods.generateJwt = function() {
         _id: this._id,
         email: this.email,
         exp: parseInt(expiry.getTime() / 1000),
-    }, "MY_SECRET"); // ToDo: DO NOT KEEP YOUR SECRET IN THE CODE!
+    }, config.secret);
 };
 
 
