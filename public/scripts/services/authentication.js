@@ -32,7 +32,7 @@ angular.module("app")
         };
 
         this.login = function (user) {
-            $http.post("/api/v1/users/login", user).success(function (data) {
+            $http.post("/api/v1/users/login", user).then(function (response) {
                 saveToken(data.token);
             });
         }
