@@ -10,8 +10,11 @@ router.post("/register", function (req, res, next) {
         if (error) {
             return next(error);
         }
+        const token = user.generateJwt();
         res.status(201);
-        res.send();
+        res.json({
+            token: token
+        });
     })
 });
 
