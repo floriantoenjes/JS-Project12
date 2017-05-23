@@ -39,6 +39,15 @@ angular.module("app")
             });
         };
 
+        this.register = function (user, callback) {
+            $http.post("/api/v1/users/register", user).then(function (response) {
+                console.log("Registered user");
+                console.log("Response", response);
+                vm.saveToken(response.data.token);
+                callback();
+            });
+        }
+
         this.currentUser = function () {
             if (vm.isLoggedIn()) {
                 const token = vm.getToken();

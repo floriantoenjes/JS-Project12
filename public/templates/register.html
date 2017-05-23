@@ -1,4 +1,4 @@
-<input type="text" placeholder="Username..."/>
-<input type="text" placeholder="Password..."/>
-<input type="text" placeholder="Confirm password..."/>
-<button>Submit</button>
+<input ng-model="user.email" type="text" placeholder="Email..."/>
+<input ng-model="user.password" type="text" placeholder="Password..."/>
+<input ng-model="user.confirmPassword" type="text" placeholder="Confirm password..."/>
+<button ng-click="register(user)">Submit</button>

@@ -9,4 +9,17 @@ angular.module("app")
         });
     };
 
+    $scope.register = function (user) {
+        if (user.password !== user.confirmPassword) {
+            return;
+        }
+        let userObject = {
+            email: user.email,
+            password: user.password
+        }
+        authenticationService.register(userObject, function () {
+            $location.path("/");
+        });
+    }
+
 });
