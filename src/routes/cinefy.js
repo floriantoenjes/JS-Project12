@@ -2,10 +2,17 @@
 
 const express = require("express");
 const https = require("https");
+const jwt = require("express-jwt");
+
 const router = express.Router();
 const config = require("../config");
 
-router.get("/:query", function (req, res, next) {
+const auth = jwt({
+    secret: "MY_SECRET",
+    userProperty: "payload"
+});
+
+router.get("/:query", auth, function (req, res, next) {
 
     doGETRequest(`https://www.omdbapi.com/?t=${req.params.query}&apikey=${config.omdbKey}`, (error, movie) => {
         if (error) {

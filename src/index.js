@@ -46,6 +46,11 @@ app.get("/vendor/angular-route.js", function (req, res) {
 app.use("/api/v1/cinefy", cinefyRoutes);
 app.use("/api/v1/users", userRoutes);
 
+app.use(function (error, req, res, next) {
+    res.status(401);
+    res.send();
+});
+
 const server = app.listen(app.get("port"), function () {
     console.log("Express server listening on port " + server.address().port);
 });
