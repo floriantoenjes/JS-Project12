@@ -36,13 +36,13 @@ angular.module("app")
             $http.post("/api/v1/users/login", user).then(function (response) {
                 vm.saveToken(response.data.token);
                 callback();
+            }).catch(function (error) {
+                callback(error);
             });
         };
 
         this.register = function (user, callback) {
             $http.post("/api/v1/users/register", user).then(function (response) {
-                console.log("Registered user");
-                console.log("Response", response);
                 vm.saveToken(response.data.token);
                 callback();
             });
