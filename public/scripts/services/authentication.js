@@ -3,6 +3,7 @@
 angular.module("app")
 
     .service("authenticationService", function ($http, $window) {
+        const vm = this;
 
         this.saveToken = function (token) {
             $window.localStorage["mean-token"] = token;
@@ -33,7 +34,7 @@ angular.module("app")
 
         this.login = function (user) {
             $http.post("/api/v1/users/login", user).then(function (response) {
-                saveToken(data.token);
+                vm.saveToken(response.data.token);
             });
         }
 
