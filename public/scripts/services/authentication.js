@@ -17,11 +17,11 @@ angular.module("app")
             $window.localStorage.removeItem("mean-token");
         };
 
-        this.isLoggedIn = function() {
-            const token = getToken();
+        this.isLoggedIn = function () {
+            const token = vm.getToken();
             let payload;
 
-            if(token){
+            if (token) {
                 payload = token.split('.')[1];
                 payload = $window.atob(payload);
                 payload = JSON.parse(payload);
@@ -37,7 +37,17 @@ angular.module("app")
                 vm.saveToken(response.data.token);
                 callback();
             });
+        };
+
+        this.currentUser = function () {
+            if (vm.isLoggedIn()) {
+                const token = vm.getToken();
+                let payload = token.split('.')[1];
+                payload = $window.atob(payload);
+                payload = JSON.parse(payload);
+                return {
+                    email: payload.email
+                };
+            }
         }
-
-
     });
