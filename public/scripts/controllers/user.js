@@ -2,6 +2,11 @@
 
 angular.module("app")
 
-.controller("UserController", function ($scope, authenticationService) {
-    $scope.login = authenticationService.login;
+.controller("UserController", function ($location, $scope, authenticationService) {
+    $scope.login = function (user) {
+        authenticationService.login(user, function () {
+            $location.path("/");
+        });
+    };
+
 });

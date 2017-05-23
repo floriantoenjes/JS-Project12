@@ -15,7 +15,7 @@ angular.module("app")
 
         this.logout = function () {
             $window.localStorage.removeItem("mean-token");
-        }
+        };
 
         this.isLoggedIn = function() {
             const token = getToken();
@@ -32,9 +32,10 @@ angular.module("app")
             }
         };
 
-        this.login = function (user) {
+        this.login = function (user, callback) {
             $http.post("/api/v1/users/login", user).then(function (response) {
                 vm.saveToken(response.data.token);
+                callback();
             });
         }
 
