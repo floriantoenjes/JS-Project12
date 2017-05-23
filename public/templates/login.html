@@ -1,4 +1,4 @@
-<p ng-if="error">{{error.statusText}}</p>
+<p ng-if="error">{{error.message}}</p>
 <input ng-model="user.email" type="text" placeholder="Email..."/>
 <input ng-model="user.password" type="password" placeholder="Password..."/>
 <button ng-click="login(user)">Submit</button>
