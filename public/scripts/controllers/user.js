@@ -2,6 +2,6 @@
 
 angular.module("app")
 
-.controller("UserController", function ($scope) {
-
+.controller("UserController", function ($scope, authenticationService) {
+    $scope.login = authenticationService.login;
 });
