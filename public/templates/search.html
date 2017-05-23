@@ -2,11 +2,11 @@
     <p>User: {{currentUser.email}}</p>
     <button ng-click="logout()">Logout</button>
 </div>
-<input ng-model="query" type="text" size="50"/>
+<input ng-model="query" type="text" size="50" placeholder="Enter a movie title..."/>
 <button ng-click="search(query)">Go</button>
 <div>{{results.movie.Title}}</div>
 <div><img src="{{results.movie.Poster}}"/></div>
 <hr/>
 <div ng-repeat="album in results.soundtracks.albums.items">
-    {{album.name}}
+    <p><img ng-src="{{album.images[2].url}}"/>{{album.name}}</p>
 </div>
