@@ -24,7 +24,7 @@ router.post("/login", function (req, res, next) {
             return next(error);
         } else if (!user) {
             res.status = 401;
-            res.send();
+            return res.send();
         }
 
         res.json({
