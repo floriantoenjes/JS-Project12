@@ -12,6 +12,8 @@ const userRoutes = require("./routes/users");
 
 const app = express();
 
+
+// db setup
 mongoose.connect("mongodb://localhost:27017/cinefy");
 const db = mongoose.connection;
 
@@ -23,8 +25,12 @@ db.on("open", function () {
     console.log("Database connection successful");
 });
 
+
+// app settings
 app.set("port", process.env.PORT || 5000);
 
+
+//setup middleware
 app.use(morgan("dev"));
 
 app.use(bodyParser.json());
@@ -33,6 +39,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use("/", express.static("public"));
+
+
 
 // vendor scripts
 app.get("/vendor/angular.js", function (req, res) {
@@ -43,7 +51,10 @@ app.get("/vendor/angular-route.js", function (req, res) {
     res.sendFile(path.join(__dirname, "../node_modules", "angular-route", "angular-route.js"));
 });
 
+
+// setup routes
 app.use("/api/v1/cinefy", cinefyRoutes);
+
 app.use("/api/v1/users", userRoutes);
 
 app.use(function (error, req, res, next) {
@@ -51,6 +62,8 @@ app.use(function (error, req, res, next) {
     res.send();
 });
 
+
+// start the server
 const server = app.listen(app.get("port"), function () {
     console.log("Express server listening on port " + server.address().port);
 });
