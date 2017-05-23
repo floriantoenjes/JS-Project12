@@ -11,4 +11,6 @@ angular.module("app")
     };
 
     $scope.currentUser = authenticationService.currentUser();
+
+    $scope.logout = authenticationService.logout;
 });
