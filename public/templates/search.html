@@ -1,4 +1,6 @@
 <input ng-model="query" type="text" size="50"/>
 <button ng-click="search(query)">Go</button>
 <div>{{results.movie.Title}}</div>
+<div><img src="{{results.movie.Poster}}"/></div>
+<hr/>
 <div ng-repeat="album in results.soundtracks.albums.items">{{album.name}}</div>
