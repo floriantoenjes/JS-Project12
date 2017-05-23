@@ -12,6 +12,7 @@
   "dependencies": {
     "angular": "^1.6.4",
     "angular-route": "^1.6.4",
+    "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "mongoose": "^4.10.1",
     "morgan": "^1.8.1"

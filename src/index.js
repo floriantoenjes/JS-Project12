@@ -1,6 +1,7 @@
 "use strict";
 
 const express = require("express");
+const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const path = require("path");
@@ -26,10 +27,15 @@ app.set("port", process.env.PORT || 5000);
 
 app.use(morgan("dev"));
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
 app.use("/", express.static("public"));
 
 // vendor scripts
-app.get("/vendor/angular.js", function(req, res) {
+app.get("/vendor/angular.js", function (req, res) {
     res.sendFile(path.join(__dirname, "../node_modules", "angular", "angular.js"));
 });
 
