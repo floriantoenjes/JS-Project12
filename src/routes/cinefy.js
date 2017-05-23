@@ -19,7 +19,7 @@ router.get("/:query", function (req, res, next) {
                 return next(error);
             }
 
-            res.json({
+            return res.json({
                 movie: movie,
                 soundtracks: soundtracks
             });

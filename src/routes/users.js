@@ -12,7 +12,7 @@ router.post("/register", function (req, res, next) {
         }
         const token = user.generateJwt();
         res.status(201);
-        res.json({
+        return res.json({
             token: token
         });
     })
@@ -23,11 +23,11 @@ router.post("/login", function (req, res, next) {
         if (error) {
             return next(error);
         } else if (!user) {
-            res.status = 401;
+            res.status(401);
             return res.send();
         }
 
-        res.json({
+        return res.json({
             "token": user.generateJwt()
         });
 
