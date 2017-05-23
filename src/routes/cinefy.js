@@ -8,6 +8,7 @@ const router = express.Router();
 const config = require("../config");
 
 const auth = jwt({
+    // ToDo: Extract secret
     secret: "MY_SECRET",
     userProperty: "payload"
 });
