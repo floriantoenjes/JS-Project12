@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("app").config(config);
+angular.module("app").config(config).run(run);
 
 function config($routeProvider) {
     $routeProvider
@@ -22,5 +22,14 @@ function config($routeProvider) {
     .otherwise({
         redirectTo: "/"
     });
+}
 
+function run($rootScope, $location, authenticationService) {
+    $rootScope.$on("$routeChangeStart", function (event, nextRoute, currentRoute) {
+        if ($location.path() === "/" && !authenticationService.isLoggedIn()) {
+            $location.path("/login");
+        } else if ($location.path !== "/" && authenticationService.isLoggedIn()) {
+            $location.path("/");
+        }
+    })
 }
