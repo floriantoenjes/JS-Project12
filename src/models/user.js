@@ -14,9 +14,26 @@ const UserSchema = new mongoose.Schema({
     }
 });
 
+UserSchema.statics.authenticate = function (email, password, callback) {
+    User.findOne({email: email})
+        .exec(function (error, user) {
+            if (error) {
+                return callback(error);
+            } else if (!user) {
+                const err = new Error('User not found.');
+                err.status = 401;
+                return callback(err);
+            }
+            if (user.password === password) {
+                return callback(null, user);
+            } else {
+                return callback();
+            }
+        });
+};
 
 UserSchema.methods.generateJwt = function() {
-    var expiry = new Date();
+    const expiry = new Date();
     expiry.setDate(expiry.getDate() + 7);
 
     return jwt.sign({
@@ -29,7 +46,7 @@ UserSchema.methods.generateJwt = function() {
 
 UserSchema.methods.validPassword = function (password) {
     return this.password === password;
-}
+};
 
 const User = mongoose.model("User", UserSchema);
 module.exports = User;

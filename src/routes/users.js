@@ -19,7 +19,19 @@ router.post("/register", function (req, res, next) {
 });
 
 router.post("/login", function (req, res, next) {
+    User.authenticate(req.body.email, req.body.password, function (error, user) {
+        if (error) {
+            return next(error);
+        } else if (!user) {
+            res.status = 401;
+            res.send();
+        }
 
+        res.json({
+            "token": user.generateJwt()
+        });
+
+    });
 });
 
 
