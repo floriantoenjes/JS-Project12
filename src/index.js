@@ -6,6 +6,7 @@ const morgan = require("morgan");
 const path = require("path");
 
 const cinefyRoutes = require("./routes/cinefy");
+const userRoutes = require("./routes/users");
 
 
 const app = express();
@@ -37,6 +38,7 @@ app.get("/vendor/angular-route.js", function (req, res) {
 });
 
 app.use("/api/v1/cinefy", cinefyRoutes);
+app.use("/api/v1/users", userRoutes);
 
 const server = app.listen(app.get("port"), function () {
     console.log("Express server listening on port " + server.address().port);
