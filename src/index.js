@@ -16,8 +16,8 @@ app.use(morgan("dev"));
 app.use("/", express.static("public"));
 
 // vendor scripts
-app.get('/vendor/angular.js', function(req, res) {
-    res.sendFile(path.join(__dirname, '../node_modules', 'angular', 'angular.js'));
+app.get("/vendor/angular.js", function(req, res) {
+    res.sendFile(path.join(__dirname, "../node_modules", "angular", "angular.js"));
 });
 
 app.get("/vendor/angular-route.js", function (req, res) {
