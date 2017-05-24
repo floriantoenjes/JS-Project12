@@ -7,7 +7,7 @@
         <button type="button" ng-click="logout()" class="btn btn-danger" id="logout">Logout</button>
     </form>
     <div ng-if="results.movie" id="movie-wrapper">
-        <div ng-if="results.movie" id="movie" class="col-md-6">
+        <div id="movie" class="col-md-6">
             <div ng-if="results.movie.Poster !== 'N/A'" id="poster"><img ng-src="{{results.movie.Poster}}"/></div>
             <h2>{{results.movie.Title}}</h2>
             <p>Year: {{results.movie.Year}}</p>
