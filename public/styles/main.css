@@ -79,8 +79,9 @@ body {
 }
 
 .error {
-    color: red;
+    color: white;
     text-align: center;
+    font-weight: bold;
 }
 
 .form-control {
