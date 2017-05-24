@@ -99,7 +99,6 @@ body {
 
 #register-wrapper form a {
     color: white;
-    margin-left: 1em;
 }
 
 #subtitle {
@@ -125,6 +124,6 @@ body {
 }
 
 #search-field {
-    width:20em;
+    width: 20em;
     margin: 0 auto
 }
