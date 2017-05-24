@@ -38,8 +38,9 @@ angular.module("app")
         };
         authenticationService.register(userObject, function (error) {
             if (error) {
-
-                error.message = "Please enter a valid Email address";
+                if (error.data.errors.email) {
+                    error.message = "Please enter a valid Email address";
+                }
                 return $scope.error = error;
             }
             $location.path("/");
