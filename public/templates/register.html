@@ -1,10 +1,7 @@
 <p ng-if="error">{{error.message}}</p>
 <form ng-submit="register(user)">
-    <input ng-model="user.email" type="text" placeholder="Email..." id="email-register-field"/>
+    <input ng-model="user.email" type="text" placeholder="Email..." autofocus="true"/>
     <input ng-model="user.password" type="password" placeholder="Password..."/>
     <input ng-model="user.confirmPassword" type="password" placeholder="Confirm password..."/>
     <button>Submit</button>
 </form>
-<script>
-    $("#email-register-field")[0].focus();
-</script>
