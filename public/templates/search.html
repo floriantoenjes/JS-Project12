@@ -1,6 +1,7 @@
 <div id="wrapper">
     <form ng-submit="search(query)" id="search-form">
-        <input ng-model="query" type="text" size="50" placeholder="Enter a movie title..." id="search-field" focus-me="true"/>
+        <input ng-model="query" type="text" size="50" placeholder="Enter a movie title..." id="search-field"
+               focus-me="true"/>
         <button type="submit" class="btn btn-primary">Go</button>
         <button type="button" ng-click="logout()" class="btn btn-danger" id="logout">Logout</button>
     </form>
@@ -19,7 +20,8 @@
     </div>
     <div ng-if="results.soundtracks" id="albums" class="col-md-6">
         <h2>Soundtracks</h2>
-        <p ng-repeat="album in results.soundtracks.albums.items"><img ng-src="{{album.images[2].url}}"/><a ng-href="{{album.external_urls.spotify}}" target="_blank">{{album.name}}</a>
+        <p ng-repeat="album in results.soundtracks.albums.items"><img ng-src="{{album.images[2].url}}"/>
+            <a ng-href="{{album.external_urls.spotify}}" target="_blank">{{album.name}}</a>
         </p>
     </div>
 </div>
