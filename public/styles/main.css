@@ -26,6 +26,7 @@ body {
 #movie-wrapper {
     height: 40em;
     background-color: black;
+    margin-top: 3em;
 }
 
 #movie {
@@ -98,7 +99,7 @@ body {
 }
 
 #subtitle {
-    margin: 0 auto 2em auto;
+    margin: 0 auto 1em auto;
     text-align: center;
 }
 
