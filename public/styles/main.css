@@ -53,3 +53,22 @@ body {
 #logout {
     margin-left: 1em;
 }
+
+
+#login-wrapper {
+    width: 25%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#login-form {
+    color: black;
+}
+
+#login-wrapper a {
+    color: dodgerblue;
+}
+
+.error {
+    color: red;
+}
