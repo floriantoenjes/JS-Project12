@@ -22,10 +22,13 @@ angular.module("app")
             let payload;
 
             if (token) {
-                payload = token.split('.')[1];
-                payload = $window.atob(payload);
-                payload = JSON.parse(payload);
-
+                try {
+                    payload = token.split('.')[1];
+                    payload = $window.atob(payload);
+                    payload = JSON.parse(payload);
+                } catch (error) {
+                    return false;
+                }
                 return payload.exp > Date.now() / 1000;
             } else {
                 return false;

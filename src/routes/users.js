@@ -8,6 +8,7 @@ router.post("/register", function (req, res, next) {
     const user = new User(req.body);
     user.save(function (error, user) {
         if (error) {
+            console.log(error);
             return next(error);
         }
         const token = user.generateJwt();
