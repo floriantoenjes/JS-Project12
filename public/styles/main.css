@@ -61,6 +61,10 @@ body {
     text-align: center;
 }
 
+#login-wrapper form + p {
+    margin-top: 1.2em;
+}
+
 #login-form {
     color: black;
 }
@@ -83,7 +87,7 @@ body {
     text-align: center;
 }
 
-#login-link {
+#register-wrapper form a {
     color: white;
     margin-left: 1em;
 }
