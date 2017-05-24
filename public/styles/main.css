@@ -4,6 +4,7 @@ body {
     color: white;
     background-image: url("../img/cinefy_background.jpg");
     background-size: cover;
+    height: 98%;
 }
 
 #logo {
