@@ -56,7 +56,7 @@ body {
 
 
 #login-wrapper {
-    width: 25%;
+    width: 25em;
     margin: 0 auto;
     text-align: center;
 }
@@ -78,7 +78,12 @@ body {
 }
 
 #register-wrapper {
-    width: 20%;
+    width: 25em;
     margin: 0 auto;
     text-align: center;
+}
+
+#login-link {
+    color: white;
+    margin-left: 1em;
 }

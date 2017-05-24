@@ -1,8 +1,8 @@
 <div id="login-wrapper">
     <p ng-if="error" class="error">{{error.message}}</p>
     <form id="login-form" ng-submit="login(user)">
-        <input ng-model="user.email" type="text" placeholder="Email..." focus-me="true" />
-        <input ng-model="user.password" type="password" placeholder="Password..." />
+        <input ng-model="user.email" type="text" placeholder="Email..." focus-me="true" class="form-control"/>
+        <input ng-model="user.password" type="password" placeholder="Password..." class="form-control"/>
         <button  type="submit" class="btn btn-primary">Login</button>
     </form>
     <p>Don't have an account yet? Register <a ng-href="/#!/register">here</a>.</p>

@@ -1,6 +1,6 @@
 <div id="wrapper">
     <form ng-submit="search(query)" id="search-form">
-        <input ng-model="query" type="text" size="50" placeholder="Enter a movie title..." id="search-field"/>
+        <input ng-model="query" type="text" size="50" placeholder="Enter a movie title..." id="search-field" focus-me="true"/>
         <button type="submit" class="btn btn-primary">Go</button>
         <button type="button" ng-click="logout()" class="btn btn-danger" id="logout">Logout</button>
     </form>
