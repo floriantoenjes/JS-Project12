@@ -2,8 +2,10 @@
     <p>User: {{currentUser.email}}</p>
     <button ng-click="logout()">Logout</button>
 </div>
-<input ng-model="query" type="text" size="50" placeholder="Enter a movie title..."/>
-<button ng-click="search(query)">Go</button>
+<form ng-submit="search(query)">
+    <input ng-model="query" type="text" size="50" placeholder="Enter a movie title..."/>
+    <button>Go</button>
+</form>
 <div>{{results.movie.Title}}</div>
 <div><img src="{{results.movie.Poster}}"/></div>
 <hr/>
