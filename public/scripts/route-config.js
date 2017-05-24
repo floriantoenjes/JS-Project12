@@ -4,24 +4,24 @@ angular.module("app").config(config).run(run);
 
 function config($routeProvider) {
     $routeProvider
-    .when("/", {
-        controller: "SearchController",
-        controllerAs: "vm",
-        templateUrl: "templates/search.html"
-    })
-    .when("/login", {
-       controller: "UserController",
-        controllerAs: "vm",
-        templateUrl: "templates/login.html"
-    })
-    .when("/register", {
-        controller: "UserController",
-        controllerAs: "vm",
-        templateUrl: "templates/register.html"
-    })
-    .otherwise({
-        redirectTo: "/"
-    });
+        .when("/", {
+            controller: "SearchController",
+            controllerAs: "vm",
+            templateUrl: "templates/search.html"
+        })
+        .when("/login", {
+            controller: "UserController",
+            controllerAs: "vm",
+            templateUrl: "templates/login.html"
+        })
+        .when("/register", {
+            controller: "UserController",
+            controllerAs: "vm",
+            templateUrl: "templates/register.html"
+        })
+        .otherwise({
+            redirectTo: "/"
+        });
 }
 
 function run($rootScope, $location, authenticationService) {
