@@ -3,7 +3,7 @@
     <button ng-click="logout()">Logout</button>
 </div>
 <form ng-submit="search(query)">
-    <input ng-model="query" type="text" size="50" placeholder="Enter a movie title..." id="search-field" autofocus="true"/>
+    <input ng-model="query" type="text" size="50" placeholder="Enter a movie title..." id="search-field" focus-me="true"/>
     <button>Go</button>
 </form>
 <div>{{results.movie.Title}}</div>
