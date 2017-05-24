@@ -1,4 +1,56 @@
 html,
 body {
     font-family: sans-serif;
+    background-color: black;
+    color: white;
+}
+
+#logo {
+    text-align: center;
+    padding: 1em;
+    font-family: Raleway, sans-serif;
+    font-weight: bold;
+    font-size: 4em;
+    color:  white
+}
+
+#wrapper {
+    width: 80%;
+    margin: 0 auto;
+    height: 50em;
+}
+
+#movie {
+    padding: 5em;
+}
+
+#poster img {
+    width: 100%
+}
+
+#albums {
+    padding: 5em;
+}
+
+#albums img {
+    margin-right: 1em;
+}
+
+#poster {
+    float: left;
+    margin-right: 2em;
+}
+
+#search-form {
+    margin: 0 auto;
+    text-align: center;
+    color: black;
+}
+#search-field {
+    font-size: 1.30em;
+    padding-bottom: 0.3em;
+}
+
+#logout {
+    margin-left: 1em;
 }

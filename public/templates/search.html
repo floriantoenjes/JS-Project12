@@ -1,14 +1,25 @@
-<div ng-if="currentUser">
-    <p>User: {{currentUser.email}}</p>
-    <button ng-click="logout()">Logout</button>
-</div>
-<form ng-submit="search(query)">
-    <input ng-model="query" type="text" size="50" placeholder="Enter a movie title..." id="search-field" focus-me="true"/>
-    <button>Go</button>
-</form>
-<div>{{results.movie.Title}}</div>
-<div><img src="{{results.movie.Poster}}"/></div>
-<hr/>
-<div ng-repeat="album in results.soundtracks.albums.items">
-    <p><img ng-src="{{album.images[2].url}}"/>{{album.name}}</p>
+<div id="wrapper">
+    <form ng-submit="search(query)" id="search-form">
+        <input ng-model="query" type="text" size="50" placeholder="Enter a movie title..." id="search-field"/>
+        <button type="submit" class="btn btn-primary">Go</button>
+        <button type="button" ng-click="logout()" class="btn btn-danger" id="logout">Logout</button>
+    </form>
+
+    <div ng-if="results.movie" id="movie" class="col-md-6">
+        <div id="poster"><img ng-src="{{results.movie.Poster}}"/></div>
+        <h2>{{results.movie.Title}}</h2>
+        <p>Year: {{results.movie.Year}}</p>
+        <p>Runtime: {{results.movie.Runtime}}</p>
+        <p>Director: {{results.movie.Director}}</p>
+        <p>Actors: {{results.movie.Actors}}</p>
+        <p>Genre: {{results.movie.Genre}}</p>
+        <p>IMDb Rating: {{results.movie.imdbRating}}</p>
+        <p>Metascore: {{results.movie.Metascore}}</p>
+        <p id="plot">{{results.movie.Plot}}</p>
+    </div>
+    <div ng-if="results.soundtracks" id="albums" class="col-md-6">
+        <h2>Soundtracks</h2>
+        <p ng-repeat="album in results.soundtracks.albums.items"><img ng-src="{{album.images[2].url}}"/>{{album.name}}
+        </p>
+    </div>
 </div>
