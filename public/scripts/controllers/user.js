@@ -38,7 +38,8 @@ angular.module("app")
         };
         authenticationService.register(userObject, function (error) {
             if (error) {
-                error.message = "Email or password do not match."
+
+                error.message = "Please enter a valid Email address";
                 return $scope.error = error;
             }
             $location.path("/");

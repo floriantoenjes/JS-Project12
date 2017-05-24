@@ -58,6 +58,7 @@ app.use("/api/v1/cinefy", cinefyRoutes);
 app.use("/api/v1/users", userRoutes);
 
 app.use(function (error, req, res, next) {
+    res.status(error.status);
     res.send(error);
 });
 
