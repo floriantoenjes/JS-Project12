@@ -1,7 +1,10 @@
 <p ng-if="error">{{error.message}}</p>
 <form ng-submit="login(user)">
-    <input ng-model="user.email" type="text" placeholder="Email..."/>
+    <input ng-model="user.email" type="text" placeholder="Email..." id="email-login-field"/>
     <input ng-model="user.password" type="password" placeholder="Password..."/>
     <button>Submit</button>
 </form>
 <p>Don't have an account yet? Register <a ng-href="/#!/register">here</a>.</p>
+<script>
+    $("#email-login-field")[0].focus();
+</script>
