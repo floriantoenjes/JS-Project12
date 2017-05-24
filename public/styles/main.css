@@ -115,5 +115,8 @@ body {
     #movie-info {
         clear: left
     }
+    #logo {
+        font-size: 3em;
+    }
 }
 
