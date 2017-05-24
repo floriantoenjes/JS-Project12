@@ -1,14 +1,16 @@
 "use strict";
 
+require("dotenv").config({path: "./src/.env"});
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
+
 const path = require("path");
-
 const cinefyRoutes = require("./routes/cinefy");
-const userRoutes = require("./routes/users");
 
+const userRoutes = require("./routes/users");
 
 const app = express();
 
@@ -39,7 +41,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use("/", express.static("public"));
-
 
 
 // vendor scripts
