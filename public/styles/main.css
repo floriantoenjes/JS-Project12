@@ -123,3 +123,8 @@ body {
     width: 20em;
     margin: 0 auto
 }
+
+#go-button {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}
