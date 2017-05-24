@@ -120,3 +120,11 @@ body {
     }
 }
 
+#search-form {
+    text-align: center;
+}
+
+#search-field {
+    width:20em;
+    margin: 0 auto
+}
