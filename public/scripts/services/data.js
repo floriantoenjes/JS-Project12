@@ -10,6 +10,10 @@ angular.module("app")
                     Authorization: "Bearer " + authenticationService.getToken()
                 }
             })
-                .then(callback);
+                .then(function (response) {
+                    callback(null, response);
+                }).catch(function (error) {
+                    callback(error);
+            });
         };
     });

@@ -1,4 +1,5 @@
 <div id="wrapper">
+    <p ng-if="error" class="error">{{error.message}}</p>
     <form ng-submit="search(query)" id="search-form">
         <input ng-model="query" type="text" size="50" placeholder="Enter a movie title..." id="search-field"
                focus-me="true"/>
