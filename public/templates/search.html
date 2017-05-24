@@ -9,15 +9,17 @@
     <div ng-if="results.movie" id="movie-wrapper">
         <div id="movie" class="col-md-6">
             <div ng-if="results.movie.Poster !== 'N/A'" id="poster"><img ng-src="{{results.movie.Poster}}"/></div>
-            <h2>{{results.movie.Title}}</h2>
-            <p>Year: {{results.movie.Year}}</p>
-            <p>Runtime: {{results.movie.Runtime}}</p>
-            <p>Director: {{results.movie.Director}}</p>
-            <p>Actors: {{results.movie.Actors}}</p>
-            <p>Genre: {{results.movie.Genre}}</p>
-            <p>IMDb Rating: {{results.movie.imdbRating}}</p>
-            <p>Metascore: {{results.movie.Metascore}}</p>
-            <p id="plot">{{results.movie.Plot}}</p>
+            <div id="movie-info">
+                <h2>{{results.movie.Title}}</h2>
+                <p>Year: {{results.movie.Year}}</p>
+                <p>Runtime: {{results.movie.Runtime}}</p>
+                <p>Director: {{results.movie.Director}}</p>
+                <p>Actors: {{results.movie.Actors}}</p>
+                <p>Genre: {{results.movie.Genre}}</p>
+                <p>IMDb Rating: {{results.movie.imdbRating}}</p>
+                <p>Metascore: {{results.movie.Metascore}}</p>
+                <p id="plot">{{results.movie.Plot}}</p>
+            </div>
         </div>
         <div ng-if="results.soundtracks" id="albums" class="col-md-6">
             <h2>Soundtracks</h2>
