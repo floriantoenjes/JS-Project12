@@ -39,11 +39,18 @@ angular.module("app")
         authenticationService.register(userObject, function (error) {
             if (error) {
                 console.log("Error", error);
+
                 if (error.data.errors.email) {
-                    error.message = "Please enter a valid email address";
+                    if (error.data.errors.email.kind === "unique") {
+                        error.message = "This email has already been taken."
+                    } else {
+                        error.message = "Please enter a valid email address.";
+                    }
+
                 } else if (error.data.errors.password) {
-                    error.message = "Password has to be between 4 and 25 characters."
+                    error.message = "Password has to be between 8 and 25 characters."
                 }
+
                 return $scope.error = error;
             }
             $location.path("/");

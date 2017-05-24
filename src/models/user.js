@@ -1,6 +1,7 @@
 const config = require("../config");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
+const uniqueValidator = require("mongoose-unique-validator");
 
 const UserSchema = new mongoose.Schema({
     email: {
@@ -13,7 +14,7 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        minlength: 4,
+        minlength: 8,
         maxlength: 25
     }
 });
@@ -51,6 +52,8 @@ UserSchema.methods.generateJwt = function() {
 UserSchema.methods.validPassword = function (password) {
     return this.password === password;
 };
+
+UserSchema.plugin(uniqueValidator);
 
 const User = mongoose.model("User", UserSchema);
 module.exports = User;
