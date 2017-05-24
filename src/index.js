@@ -14,7 +14,7 @@ const app = express();
 
 
 // db setup
-mongoose.connect("mongodb://localhost:27017/cinefy");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/cinefy");
 const db = mongoose.connection;
 
 db.on("error", function (error) {
