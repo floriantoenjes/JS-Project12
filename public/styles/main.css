@@ -59,11 +59,6 @@ body {
     padding-bottom: 0.3em;
 }
 
-#logout {
-    margin-left: 1em;
-}
-
-
 #login-wrapper {
     width: 25em;
     margin: 0 auto;
@@ -99,6 +94,7 @@ body {
 
 #register-wrapper form a {
     color: white;
+    margin-left: 1em;
 }
 
 #subtitle {
