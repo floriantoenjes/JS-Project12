@@ -1,5 +1,7 @@
 <p ng-if="error">{{error.message}}</p>
-<input ng-model="user.email" type="text" placeholder="Email..."/>
-<input ng-model="user.password" type="password" placeholder="Password..."/>
-<button ng-click="login(user)">Submit</button>
+<form ng-submit="login(user)">
+    <input ng-model="user.email" type="text" placeholder="Email..."/>
+    <input ng-model="user.password" type="password" placeholder="Password..."/>
+    <button>Submit</button>
+</form>
 <p>Don't have an account yet? Register <a ng-href="/#!/register">here</a>.</p>
