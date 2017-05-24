@@ -1,5 +1,5 @@
 <div id="login-wrapper">
-    <p ng-if="error" class="error">Password does not match</p>
+    <p ng-if="error" class="error">{{error.message}}</p>
     <form id="login-form" ng-submit="login(user)">
         <input ng-model="user.email" type="text" placeholder="Email..." focus-me="true" />
         <input ng-model="user.password" type="password" placeholder="Password..." />
