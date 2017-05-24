@@ -1,4 +1,5 @@
 const config = require("../config");
+const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
@@ -29,15 +30,17 @@ UserSchema.statics.authenticate = function (email, password, callback) {
                 err.status = 401;
                 return callback(err);
             }
-            if (user.password === password) {
-                return callback(null, user);
-            } else {
-                return callback();
-            }
+            bcrypt.compare(password, user.password, function (error, result) {
+                if (result === true) {
+                    return callback(null, user);
+                } else {
+                    return callback();
+                }
+            })
         });
 };
 
-UserSchema.methods.generateJwt = function() {
+UserSchema.methods.generateJwt = function () {
     const expiry = new Date();
     expiry.setDate(expiry.getDate() + 7);
 
@@ -52,6 +55,17 @@ UserSchema.methods.generateJwt = function() {
 UserSchema.methods.validPassword = function (password) {
     return this.password === password;
 };
+
+UserSchema.pre('save', function (next) {
+    const user = this;
+    bcrypt.hash(user.password, 10, function (err, hash) {
+        if (err) {
+            return next(err);
+        }
+        user.password = hash;
+        next();
+    })
+});
 
 UserSchema.plugin(uniqueValidator);
 
