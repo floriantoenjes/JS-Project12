@@ -1,7 +1,9 @@
-<p ng-if="error">{{error.message}}</p>
-<form ng-submit="register(user)">
-    <input ng-model="user.email" type="text" placeholder="Email..." focus-me="true"/>
-    <input ng-model="user.password" type="password" placeholder="Password..."/>
-    <input ng-model="user.confirmPassword" type="password" placeholder="Confirm password..."/>
-    <button>Submit</button>
-</form>
+<div id="register-wrapper">
+    <p ng-if="error" class="error">{{error.message}}</p>
+    <form ng-submit="register(user)" class="form-group">
+        <input ng-model="user.email" type="text" placeholder="Email..." focus-me="true" class="form-control"/>
+        <input ng-model="user.password" type="password" placeholder="Password..." class="form-control"/>
+        <input ng-model="user.confirmPassword" type="password" placeholder="Confirm password..." class="form-control"/>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+</div>

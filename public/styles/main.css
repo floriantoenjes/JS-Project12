@@ -72,3 +72,13 @@ body {
 .error {
     color: red;
 }
+
+.form-control {
+    margin: 1em;
+}
+
+#register-wrapper {
+    width: 20%;
+    margin: 0 auto;
+    text-align: center;
+}
