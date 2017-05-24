@@ -7,7 +7,7 @@ body {
 
 #logo {
     text-align: center;
-    padding: 1em;
+    padding: 1em 1em 0 1em;
     font-family: Raleway, sans-serif;
     font-weight: bold;
     font-size: 4em;
@@ -93,6 +93,6 @@ body {
 }
 
 #subtitle {
-    margin: 0 auto 1em auto;
+    margin: 0 auto 2em auto;
     text-align: center;
 }
