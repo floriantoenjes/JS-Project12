@@ -5,16 +5,15 @@ const https = require("https");
 const jwt = require("express-jwt");
 
 const router = express.Router();
-const config = require("../config");
 
 const auth = jwt({
-    secret: config.secret,
+    secret: process.env.SECRET,
     userProperty: "payload"
 });
 
 router.get("/:query", auth, function (req, res, next) {
 
-    doGETRequest(`https://www.omdbapi.com/?t=${req.params.query}&apikey=${config.omdbKey}`, (error, movie) => {
+    doGETRequest(`https://www.omdbapi.com/?t=${req.params.query}&apikey=${process.env.OMDBKEY}`, (error, movie) => {
         if (error) {
             return next(error);
         } else if (movie.Response === "False") {

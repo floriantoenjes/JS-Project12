@@ -1,4 +1,3 @@
-const config = require("../config");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
@@ -48,7 +47,7 @@ UserSchema.methods.generateJwt = function () {
         _id: this._id,
         email: this.email,
         exp: parseInt(expiry.getTime() / 1000),
-    }, config.secret);
+    }, process.env.SECRET);
 };
 
 
