@@ -136,7 +136,7 @@ body {
     padding-right: 1.5em;
 }
 
-#add-favorite-button {
+.favorite-button {
     font-size: 0.75em;
     float: right;
 }
