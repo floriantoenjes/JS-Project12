@@ -57,23 +57,21 @@ router.post("/favorites/", auth, function (req, res, next) {
             });
         }
 
-        User.findById(req.payload._id, function (error, user) {
+        const userId = req.payload._id;
+        User.update({_id: userId}, {$push: {favorites: soundtrack._id}}, function (error, updatedUser) {
             if (error) {
                 return next(error);
-            } else if (!user) {
-                return next();
             }
-            console.log("SOUNDTRACK:", soundtrack);
-            user.favorites.push(soundtrack._id);
-            user.email = "123@abc.de";
-            user.update(function (error, user) {
-                if (error) {
-                    console.log(error);
-                    return next(error);
-                }
-                return res.json(user);
-            });
-        });
+            res.json(updatedUser);
+        // });
+
+        // User.findById(userId).populate("favorites").exec(function (err, user) {
+        //     if (err) {
+        //         return next(err);
+        //     }
+        //     console.log("USER", user);
+        //     res.json(user);
+        // });
     });
 });
 
