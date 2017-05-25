@@ -35,6 +35,11 @@ router.get("/:query", auth, function (req, res, next) {
     });
 });
 
+router.post("/favorites/add", auth, function (req, res, next) {
+
+    }
+);
+
 function doGETRequest(url, callback) {
     const request = https.get(url, (response) => {
         if (response.statusCode === 200) {
