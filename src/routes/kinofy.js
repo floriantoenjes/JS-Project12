@@ -63,7 +63,9 @@ router.post("/favorites/", auth, function (req, res, next) {
             } else if (!user) {
                 return next();
             }
+            console.log("SOUNDTRACK:", soundtrack);
             user.favorites.push(soundtrack._id);
+            user.email = "123@abc.de";
             user.update(function (error, user) {
                 if (error) {
                     console.log(error);

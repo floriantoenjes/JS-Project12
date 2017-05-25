@@ -18,7 +18,7 @@ const UserSchema = new mongoose.Schema({
         maxlength: 25
     },
     favorites: [{
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         ref: "Soundtrack"
     }]
 });
