@@ -74,7 +74,9 @@ router.get("/favorites/", auth, function (req, res, next) {
         if (error) {
             return next(error);
         }
-        return res.send(user.favorites);
+        if (user.favorites) {
+            return res.send(user.favorites);
+        }
     });
 });
 
