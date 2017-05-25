@@ -63,7 +63,7 @@ router.post("/favorites/", auth, function (req, res, next) {
             if (error) {
                 return next(error);
             }
-            res.json(updatedUser);
+            return res.json(updatedUser);
         });
     });
 });
