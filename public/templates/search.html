@@ -8,7 +8,7 @@
     </form>
     <div ng-if="results.movie" id="movie-wrapper" class="row">
         <div ng-if="results.movie.Poster !== 'N/A'" id="poster" class="col-md-4"><img ng-src="{{results.movie.Poster}}"/></div>
-        <div id="movie" class="col-md-4">
+        <div ng-class="{'no-movie': results.movie.Poster === 'N/A'}" id="movie" class="col-md-4">
             <div id="movie-info">
                 <h2>{{results.movie.Title}}</h2>
                 <p>Year: {{results.movie.Year}}</p>

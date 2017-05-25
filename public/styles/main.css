@@ -41,6 +41,10 @@ body {
     display: block;
 }
 
+.no-movie {
+    margin-left: 5em;
+}
+
 #albums {
     padding: 5em;
 }
