@@ -11,7 +11,7 @@ angular.module("app")
             dataService.getMovieSoundtrack(query, function (error, response) {
                 if (error) {
                     const error = new Error();
-                    error.message = "The search gave no results.";
+                    error.message = `No results for ${query}.`;
                     return $scope.error = error;
                 }
                 $scope.error = false;
