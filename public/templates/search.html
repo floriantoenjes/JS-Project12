@@ -1,4 +1,4 @@
-<div id="wrapper">
+<div id="wrapper" class="container">
     <p ng-if="error" class="error">{{error.message}}</p>
     <form ng-submit="search(query)" id="search-form" class="form-inline">
         <input ng-model="query" type="text" size="50" placeholder="Enter a movie title..." id="search-field"
@@ -6,7 +6,7 @@
         <button type="submit" class="btn btn-primary" id="go-button">Go</button>
         <button type="button" ng-click="logout()" class="btn btn-danger" id="logout">Logout</button>
     </form>
-    <div ng-if="results.movie" id="movie-wrapper">
+    <div ng-if="results.movie" id="movie-wrapper" class="row">
         <div id="movie" class="col-md-6">
             <div ng-if="results.movie.Poster !== 'N/A'" id="poster"><img ng-src="{{results.movie.Poster}}"/></div>
             <div id="movie-info">
