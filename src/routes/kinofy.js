@@ -39,10 +39,10 @@ router.get("/:query", auth, function (req, res, next) {
 
 router.post("/favorites/", function (req, res, next) {
         const soundtrack = new Soundtrack({
-            _id: "1",
-            name: "Test Sound",
-            href: "Test Href",
-            imageUrl: "Test img url"
+            _id: req.body.id,
+            name: req.body.name,
+            href: req.body.href,
+            imageUrl: req.body.images[2].url
         });
         soundtrack.save(function (error, soundtrack) {
             if (error) {

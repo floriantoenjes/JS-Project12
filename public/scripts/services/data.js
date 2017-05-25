@@ -16,4 +16,8 @@ angular.module("app")
                     callback(error);
             });
         };
+
+        this.addFavorite = function (album) {
+            $http.post("/api/v1/kinofy/favorites", album);
+        }
     });

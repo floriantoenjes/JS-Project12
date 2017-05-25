@@ -25,4 +25,9 @@ angular.module("app")
             authenticationService.logout();
             $route.reload();
         };
+
+
+        $scope.addFavorite = function (album) {
+            dataService.addFavorite(album);
+        }
     });

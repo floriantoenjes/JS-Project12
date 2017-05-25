@@ -25,6 +25,7 @@
             <h2>Soundtracks</h2>
             <p ng-repeat="album in results.soundtracks.albums.items"><img ng-src="{{album.images[2].url}}"/>
                 <a ng-href="{{album.external_urls.spotify}}" target="_blank">{{album.name}}</a>
+                <button ng-click="addFavorite(album)">Add Favorite</button>
             </p>
         </div>
     </div>
