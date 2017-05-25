@@ -4,6 +4,13 @@ angular.module("app")
 
     .controller("SearchController", function ($route, $scope, authenticationService, dataService) {
 
+        $scope.currentUser = authenticationService.currentUser();
+
+        authenticationService.getFavorites(function (favorites) {
+            $scope.favorites = favorites;
+        });
+
+
         $scope.search = function (query) {
             if (query === undefined || query.trim().length === 0) {
                 return;
@@ -19,12 +26,6 @@ angular.module("app")
             });
         };
 
-        $scope.currentUser = authenticationService.currentUser();
-
-        authenticationService.getFavorites(function (favorites) {
-            $scope.favorites = favorites;
-        });
-
         $scope.logout = function () {
             authenticationService.logout();
             $route.reload();
@@ -33,10 +34,7 @@ angular.module("app")
 
         $scope.addFavorite = function (album) {
             dataService.addFavorite(album, function () {
-                authenticationService.getFavorites(function (favorites) {
-                    $scope.favorites = favorites;
-                    // $scope.apply();
-                });
+                $scope.favorites.push(album.id);
             });
         };
     });
