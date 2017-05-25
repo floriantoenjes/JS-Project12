@@ -74,7 +74,7 @@ angular.module("app")
                 const albums = response.data;
                 $rootScope.favorites = getAlbumIds(albums);
 
-                return response.data;
+                return getAlbumIds(albums);
             });
         };
 

@@ -20,6 +20,7 @@ angular.module("app")
         };
 
         $scope.currentUser = authenticationService.currentUser();
+        $scope.favorites = authenticationService.getFavorites();
 
         $scope.logout = function () {
             authenticationService.logout();
@@ -29,5 +30,6 @@ angular.module("app")
 
         $scope.addFavorite = function (album) {
             dataService.addFavorite(album);
+            authenticationService.getFavorites();
         };
     });
