@@ -31,8 +31,14 @@ body {
     padding: 5em;
 }
 
+#poster {
+    float: left;
+    /*margin-right: 2em;*/
+}
+
 #poster img {
-    width: 100%
+    margin: 6.5em auto 0 auto;
+    display: block;
 }
 
 #albums {
@@ -41,11 +47,6 @@ body {
 
 #albums img {
     margin-right: 1em;
-}
-
-#poster {
-    float: left;
-    margin-right: 2em;
 }
 
 #search-form {
@@ -104,14 +105,18 @@ body {
 
 @media screen and (max-width: 1650px) {
     #poster img {
-        width: 30%;
-        margin-bottom: 2em;
+        /*width: 30%;*/
+        /*margin-bottom: 2em;*/
     }
     #movie-info {
         clear: left
     }
     #logo {
         font-size: 3em;
+    }
+
+    #wrapper {
+        width: 100%;
     }
 }
 

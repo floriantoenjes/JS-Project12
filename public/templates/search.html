@@ -7,8 +7,8 @@
         <button type="button" ng-click="logout()" class="btn btn-danger" id="logout">Logout</button>
     </form>
     <div ng-if="results.movie" id="movie-wrapper" class="row">
-        <div id="movie" class="col-md-6">
-            <div ng-if="results.movie.Poster !== 'N/A'" id="poster"><img ng-src="{{results.movie.Poster}}"/></div>
+        <div ng-if="results.movie.Poster !== 'N/A'" id="poster" class="col-md-4"><img ng-src="{{results.movie.Poster}}"/></div>
+        <div id="movie" class="col-md-4">
             <div id="movie-info">
                 <h2>{{results.movie.Title}}</h2>
                 <p>Year: {{results.movie.Year}}</p>
@@ -21,7 +21,7 @@
                 <p id="plot">{{results.movie.Plot}}</p>
             </div>
         </div>
-        <div ng-if="results.soundtracks" id="albums" class="col-md-6">
+        <div ng-if="results.soundtracks" id="albums" class="col-md-4">
             <h2>Soundtracks</h2>
             <p ng-repeat="album in results.soundtracks.albums.items"><img ng-src="{{album.images[2].url}}"/>
                 <a ng-href="{{album.external_urls.spotify}}" target="_blank">{{album.name}}</a>
