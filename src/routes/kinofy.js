@@ -42,22 +42,21 @@ router.post("/favorites/", function (req, res, next) {
         if (error) {
             return next(error);
         } else if (!soundtrack) {
-
+            soundtrack = new Soundtrack({
+                _id: req.body.id,
+                name: req.body.name,
+                href: req.body.href,
+                imageUrl: req.body.images[2].url
+            });
+            soundtrack.save(function (error, soundtrack) {
+                if (error) {
+                    console.log(error);
+                    return next(error);
+                }
+                return res.json(soundtrack);
+            });
         }
     });
-        const soundtrack = new Soundtrack({
-            _id: req.body.id,
-            name: req.body.name,
-            href: req.body.href,
-            imageUrl: req.body.images[2].url
-        });
-        soundtrack.save(function (error, soundtrack) {
-            if (error) {
-                console.log(error);
-                return next(error);
-            }
-            return res.json(soundtrack);
-        });
     }
 );
 
