@@ -58,20 +58,12 @@ router.post("/favorites/", auth, function (req, res, next) {
         }
 
         const userId = req.payload._id;
-        User.update({_id: userId}, {$push: {favorites: soundtrack._id}}, function (error, updatedUser) {
+        User.update({_id: userId}, {$addToSet: {favorites: soundtrack._id}}, function (error, updatedUser) {
             if (error) {
                 return next(error);
             }
             res.json(updatedUser);
-        // });
-
-        // User.findById(userId).populate("favorites").exec(function (err, user) {
-        //     if (err) {
-        //         return next(err);
-        //     }
-        //     console.log("USER", user);
-        //     res.json(user);
-        // });
+        });
     });
 });
 
