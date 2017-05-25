@@ -66,7 +66,7 @@ angular.module("app")
         };
 
         this.getFavorites = function (callback) {
-            $http.get("/api/v1/kinofy/favorites/all", {
+            $http.get("/api/v1/kinofy/favorites/", {
                 headers: {
                     Authorization: "Bearer " + vm.getToken()
                 }

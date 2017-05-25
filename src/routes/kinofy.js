@@ -14,7 +14,7 @@ const auth = jwt({
     userProperty: "payload"
 });
 
-router.get("/:query", auth, function (req, res, next) {
+router.get("/search/:query", auth, function (req, res, next) {
     console.log("Payload", req.payload);
 
     doGETRequest(`https://www.omdbapi.com/?t=${req.params.query}&apikey=${process.env.OMDBKEY}`, (error, movie) => {
@@ -68,7 +68,7 @@ router.post("/favorites/", auth, function (req, res, next) {
     });
 });
 
-router.get("/favorites/all", auth, function (req, res, next) {
+router.get("/favorites/", auth, function (req, res, next) {
     const userId = req.payload._id;
     User.findById(userId).populate("favorites").exec(function (error, user) {
         if (error) {
