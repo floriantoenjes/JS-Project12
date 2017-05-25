@@ -71,8 +71,18 @@ angular.module("app")
                     Authorization: "Bearer " + vm.getToken()
                 }
             }).then(function (response) {
-                $rootScope.favorites = response.data;
+                const albums = response.data;
+                $rootScope.favorites = getAlbumIds(albums);
+
                 return response.data;
             });
+        };
+
+        function getAlbumIds(albums) {
+            const albumIds = [];
+            for (let album of albums) {
+                albumIds.push(album._id);
+            }
+            return albumIds;
         }
     });
