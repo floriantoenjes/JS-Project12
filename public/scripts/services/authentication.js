@@ -3,7 +3,7 @@
 angular.module("app")
 
 
-    .service("authenticationService", function ($http, $window, $rootScope) {
+    .service("authenticationService", function ($http, $window) {
         const vm = this;
 
         this.saveToken = function (token) {
@@ -65,16 +65,15 @@ angular.module("app")
             }
         };
 
-        this.getFavorites = function () {
+        this.getFavorites = function (callback) {
             $http.get("/api/v1/kinofy/favorites/all", {
                 headers: {
                     Authorization: "Bearer " + vm.getToken()
                 }
             }).then(function (response) {
                 const albums = response.data;
-                $rootScope.favorites = getAlbumIds(albums);
 
-                return getAlbumIds(albums);
+                callback(getAlbumIds(albums));
             });
         };
 

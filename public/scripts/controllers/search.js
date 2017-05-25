@@ -20,7 +20,10 @@ angular.module("app")
         };
 
         $scope.currentUser = authenticationService.currentUser();
-        $scope.favorites = authenticationService.getFavorites();
+
+        authenticationService.getFavorites(function (favorites) {
+            $scope.favorites = favorites;
+        });
 
         $scope.logout = function () {
             authenticationService.logout();
@@ -29,7 +32,11 @@ angular.module("app")
 
 
         $scope.addFavorite = function (album) {
-            dataService.addFavorite(album);
-            authenticationService.getFavorites();
+            dataService.addFavorite(album, function () {
+                authenticationService.getFavorites(function (favorites) {
+                    $scope.favorites = favorites;
+                    // $scope.apply();
+                });
+            });
         };
     });

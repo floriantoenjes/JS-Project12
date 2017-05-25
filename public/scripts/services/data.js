@@ -17,11 +17,11 @@ angular.module("app")
             });
         };
 
-        this.addFavorite = function (album) {
+        this.addFavorite = function (album, callback) {
             $http.post("/api/v1/kinofy/favorites", album, {
                 headers: {
                     Authorization: "Bearer " + authenticationService.getToken()
                 }
-            });
+            }).then(callback);
         }
     });
