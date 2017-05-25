@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 
 const path = require("path");
-const cinefyRoutes = require("./routes/cinefy");
+const kinofyRoutes = require("./routes/kinofy");
 
 const userRoutes = require("./routes/users");
 
@@ -54,7 +54,7 @@ app.get("/vendor/angular-route.js", function (req, res) {
 
 
 // setup routes
-app.use("/api/v1/cinefy", cinefyRoutes);
+app.use("/api/v1/kinofy", kinofyRoutes);
 
 app.use("/api/v1/users", userRoutes);
 

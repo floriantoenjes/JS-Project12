@@ -5,7 +5,7 @@ angular.module("app")
     .service("dataService", function ($http, authenticationService) {
 
         this.getMovieSoundtrack = function (query, callback) {
-            $http.get(`/api/v1/cinefy/${query}`, {
+            $http.get(`/api/v1/kinofy/${query}`, {
                 headers: {
                     Authorization: "Bearer " + authenticationService.getToken()
                 }
