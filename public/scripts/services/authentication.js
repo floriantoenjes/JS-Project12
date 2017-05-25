@@ -38,6 +38,9 @@ angular.module("app")
         this.login = function (user, callback) {
             $http.post("/api/v1/users/login", user).then(function (response) {
                 vm.saveToken(response.data.token);
+
+                vm.getFavorites();
+
                 callback();
             }).catch(callback);
         };
@@ -47,7 +50,7 @@ angular.module("app")
                 vm.saveToken(response.data.token);
                 callback();
             }).catch(callback);
-        }
+        };
 
         this.currentUser = function () {
             if (vm.isLoggedIn()) {
@@ -59,5 +62,18 @@ angular.module("app")
                     email: payload.email
                 };
             }
+        };
+
+        this.getFavorites = function () {
+            $http.get("/api/v1/kinofy/favorites/all", {
+                headers: {
+                    Authorization: "Bearer " + vm.getToken()
+                }
+            }).then(function (error, response) {
+                if (error) {
+                    console.log(error);
+                }
+                return response.data;
+            })
         }
     });

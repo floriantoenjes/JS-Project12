@@ -68,6 +68,16 @@ router.post("/favorites/", auth, function (req, res, next) {
     });
 });
 
+router.get("/favorites/all", auth, function (req, res, next) {
+    const userId = req.payload._id;
+    User.findById(userId).populate("favorites").exec(function (error, user) {
+        if (error) {
+            return next(error);
+        }
+        return res.send(user.favorites);
+    });
+});
+
 function doGETRequest(url, callback) {
     const request = https.get(url, (response) => {
         if (response.statusCode === 200) {
