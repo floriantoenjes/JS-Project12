@@ -18,6 +18,10 @@ angular.module("app")
         };
 
         this.addFavorite = function (album) {
-            $http.post("/api/v1/kinofy/favorites", album);
+            $http.post("/api/v1/kinofy/favorites", album, {
+                headers: {
+                    Authorization: "Bearer " + authenticationService.getToken()
+                }
+            });
         }
     });

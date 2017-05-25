@@ -37,7 +37,7 @@ router.get("/:query", auth, function (req, res, next) {
     });
 });
 
-router.post("/favorites/", function (req, res, next) {
+router.post("/favorites/", auth, function (req, res, next) {
     Soundtrack.findById(req.body.id, function (error, soundtrack) {
         if (error) {
             return next(error);
@@ -57,8 +57,7 @@ router.post("/favorites/", function (req, res, next) {
             });
         }
     });
-    }
-);
+});
 
 function doGETRequest(url, callback) {
     const request = https.get(url, (response) => {
