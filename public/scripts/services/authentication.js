@@ -2,7 +2,8 @@
 
 angular.module("app")
 
-    .service("authenticationService", function ($http, $window) {
+
+    .service("authenticationService", function ($http, $window, $rootScope) {
         const vm = this;
 
         this.saveToken = function (token) {
@@ -69,11 +70,9 @@ angular.module("app")
                 headers: {
                     Authorization: "Bearer " + vm.getToken()
                 }
-            }).then(function (error, response) {
-                if (error) {
-                    console.log(error);
-                }
+            }).then(function (response) {
+                $rootScope.favorites = response.data;
                 return response.data;
-            })
+            });
         }
     });

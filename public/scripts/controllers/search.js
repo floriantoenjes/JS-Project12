@@ -29,5 +29,5 @@ angular.module("app")
 
         $scope.addFavorite = function (album) {
             dataService.addFavorite(album);
-        }
+        };
     });
