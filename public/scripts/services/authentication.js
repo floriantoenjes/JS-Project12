@@ -40,8 +40,6 @@ angular.module("app")
             $http.post("/api/v1/users/login", user).then(function (response) {
                 vm.saveToken(response.data.token);
 
-                vm.getFavorites();
-
                 callback();
             }).catch(callback);
         };
