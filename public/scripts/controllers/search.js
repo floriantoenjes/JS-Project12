@@ -2,7 +2,7 @@
 
 angular.module("app")
 
-    .controller("SearchController", function ($route, $scope, authenticationService, dataService) {
+    .controller("SearchController", function ($location, $scope, authenticationService, dataService) {
 
         $scope.currentUser = authenticationService.currentUser();
 
@@ -28,7 +28,7 @@ angular.module("app")
 
         $scope.logout = function () {
             authenticationService.logout();
-            $route.reload();
+            $location.path("/login");
         };
 
 
