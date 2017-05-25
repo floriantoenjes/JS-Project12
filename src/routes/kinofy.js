@@ -12,6 +12,7 @@ const auth = jwt({
 });
 
 router.get("/:query", auth, function (req, res, next) {
+    console.log("Payload", req.payload);
 
     doGETRequest(`https://www.omdbapi.com/?t=${req.params.query}&apikey=${process.env.OMDBKEY}`, (error, movie) => {
         if (error) {
