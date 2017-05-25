@@ -38,6 +38,13 @@ router.get("/:query", auth, function (req, res, next) {
 });
 
 router.post("/favorites/", function (req, res, next) {
+    Soundtrack.findById(req.body.id, function (error, soundtrack) {
+        if (error) {
+            return next(error);
+        } else if (!soundtrack) {
+
+        }
+    });
         const soundtrack = new Soundtrack({
             _id: req.body.id,
             name: req.body.name,
@@ -46,6 +53,7 @@ router.post("/favorites/", function (req, res, next) {
         });
         soundtrack.save(function (error, soundtrack) {
             if (error) {
+                console.log(error);
                 return next(error);
             }
             return res.json(soundtrack);
