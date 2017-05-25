@@ -5,6 +5,7 @@ const https = require("https");
 const jwt = require("express-jwt");
 
 const Soundtrack = require("../models/soundtrack");
+const User = require("../models/user");
 
 const router = express.Router();
 
@@ -53,9 +54,24 @@ router.post("/favorites/", auth, function (req, res, next) {
                     console.log(error);
                     return next(error);
                 }
-                return res.json(soundtrack);
             });
         }
+
+        User.findById(req.payload._id, function (error, user) {
+            if (error) {
+                return next(error);
+            } else if (!user) {
+                return next();
+            }
+            user.favorites.push(soundtrack._id);
+            user.update(function (error, user) {
+                if (error) {
+                    console.log(error);
+                    return next(error);
+                }
+                return res.json(user);
+            });
+        });
     });
 });
 

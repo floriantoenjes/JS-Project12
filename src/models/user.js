@@ -16,7 +16,11 @@ const UserSchema = new mongoose.Schema({
         required: true,
         minlength: 8,
         maxlength: 25
-    }
+    },
+    favorites: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Soundtrack"
+    }]
 });
 
 UserSchema.statics.authenticate = function (email, password, callback) {
