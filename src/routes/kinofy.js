@@ -4,6 +4,8 @@ const express = require("express");
 const https = require("https");
 const jwt = require("express-jwt");
 
+const Soundtrack = require("../models/soundtrack");
+
 const router = express.Router();
 
 const auth = jwt({
@@ -35,8 +37,19 @@ router.get("/:query", auth, function (req, res, next) {
     });
 });
 
-router.post("/favorites/add", auth, function (req, res, next) {
-
+router.post("/favorites/", function (req, res, next) {
+        const soundtrack = new Soundtrack({
+            _id: "1",
+            name: "Test Sound",
+            href: "Test Href",
+            imageUrl: "Test img url"
+        });
+        soundtrack.save(function (error, soundtrack) {
+            if (error) {
+                return next(error);
+            }
+            return res.json(soundtrack);
+        });
     }
 );
 
