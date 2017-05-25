@@ -58,6 +58,7 @@ router.post("/favorites/", auth, function (req, res, next) {
         }
 
         const userId = req.payload._id;
+
         User.update({_id: userId}, {$addToSet: {favorites: soundtrack._id}}, function (error, updatedUser) {
             if (error) {
                 return next(error);
