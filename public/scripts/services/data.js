@@ -24,4 +24,5 @@ angular.module("app")
                 }
             }).then(callback);
         }
+
     });

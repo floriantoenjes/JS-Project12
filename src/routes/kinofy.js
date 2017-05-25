@@ -68,6 +68,10 @@ router.post("/favorites/", auth, function (req, res, next) {
     });
 });
 
+router.delete("/favorites/:id", function (req, res, next) {
+
+});
+
 router.get("/favorites/", auth, function (req, res, next) {
     const userId = req.payload._id;
     User.findById(userId).populate("favorites").exec(function (error, user) {
