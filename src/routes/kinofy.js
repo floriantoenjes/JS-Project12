@@ -68,7 +68,25 @@ router.post("/favorites/", auth, function (req, res, next) {
     });
 });
 
-router.delete("/favorites/:id", function (req, res, next) {
+router.delete("/favorites/:id", auth, function (req, res, next) {
+
+    Soundtrack.findById(req.params.id, function (error, soundtrack) {
+        if (error) {
+            return next(error);
+        } else if (!soundtrack) {
+            return next();
+        }
+
+        const userId = req.payload.id;
+
+        User.update({_id: userId}, {$pull: {favorites: soundtrack._id}}, function (error, updatedUser) {
+            if (error) {
+                return next(error);
+            }
+            res.status(204);
+            return res.send();
+        });
+    });
 
 });
 
