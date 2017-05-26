@@ -11,6 +11,13 @@ angular.module("app")
             $scope.favorites = getAlbumIds(favorites);
         });
 
+        function getAlbumIds(albums) {
+            const albumIds = [];
+            for (let album of albums) {
+                albumIds.push(album._id);
+            }
+            return albumIds;
+        }
 
         // Functions
         $scope.search = function (query) {
@@ -48,13 +55,5 @@ angular.module("app")
                 $scope.favorites.splice($scope.favorites.indexOf(album.id), 1);
             })
         };
-
-        function getAlbumIds(albums) {
-            const albumIds = [];
-            for (let album of albums) {
-                albumIds.push(album._id);
-            }
-            return albumIds;
-        }
 
     });

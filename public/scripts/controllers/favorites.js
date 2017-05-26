@@ -4,7 +4,6 @@ angular.module("app")
 
     .controller("FavoritesController", function ($scope, authenticationService) {
 
-
         // Initialize Data
         $scope.backLink = "/#!";
 
