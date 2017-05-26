@@ -5,7 +5,7 @@
                focus-me="true" class="form-control"/>
         <button type="submit" class="btn btn-primary" id="go-button">Go</button>
         <button type="button" ng-click="logout()" class="btn btn-danger" id="logout">Logout</button>
-        <a ng-href="/#!/favorites">Favorites</a>
+        <a ng-href="/#!/favorites">My Favorites</a>
     </form>
     <div ng-if="results.movie" id="movie-wrapper" class="row">
         <div ng-if="results.movie.Poster !== 'N/A'" id="poster" class="col-md-4"><img ng-src="{{results.movie.Poster}}"/></div>
