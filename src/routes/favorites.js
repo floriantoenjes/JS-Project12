@@ -81,21 +81,5 @@ router.delete("/:id", auth, function (req, res, next) {
 
 });
 
-router.get("/users/:userId", auth, function (req, res, next) {
-    User.findOne({_id: req.params.userId}).populate("favorites").exec(function (error, user) {
-        if (error) {
-            return next(error);
-        } else if (!user) {
-            return next();
-        } else if (!user.favorites) {
-            res.status(404);
-            return res.send();
-        }
-        if (user && user.favorites) {
-            return res.json(user.favorites);
-        }
-    });
-});
-
 
 module.exports = router;

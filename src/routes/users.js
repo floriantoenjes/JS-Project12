@@ -23,14 +23,16 @@ router.get("/", auth, function (req, res, next) {
 });
 
 router.get("/:userId", auth, function (req, res, next) {
-    User.findById(req.params.userId, "email" ,function (error, user) {
+    User.findOne({_id: req.params.userId}).populate("favorites").exec(function (error, user) {
         if (error) {
             return next(error);
         } else if (!user) {
+            return next();
+        } else if (!user.favorites) {
             res.status(404);
-            res.send();
+            return res.send();
         }
-        res.json(user);
+        return res.json(user);
     });
 });
 

@@ -88,14 +88,14 @@ angular.module("app")
         };
 
         this.getFavoritesFromUser = function (id, callback) {
-            $http.get(`/api/v1/kinofy/favorites/users/${id}`, {
+            $http.get(`/api/v1/users/${id}`, {
                 headers: {
                     Authorization: "Bearer " + vm.getToken()
                 }
             }).then(function (response) {
-                const favorites = response.data;
+                const user = response.data;
 
-                callback(favorites);
+                callback(user.favorites);
             });
         };
 
