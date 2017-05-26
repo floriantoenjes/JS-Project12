@@ -43,14 +43,11 @@ function config($routeProvider) {
 function run($rootScope, $location, authenticationService) {
     $rootScope.$on("$routeChangeStart", function (event, nextRoute, currentRoute) {
 
-        // ToDo: Fix security issue here
-        if ($location.path() === "/" && !authenticationService.isLoggedIn()) {
-            $location.path("/login");
-
-        } else if (($location.path() === "/login" || $location.path() === "/register") && authenticationService.isLoggedIn()) {
+        if (($location.path() === "/login" || $location.path() === "/register") && authenticationService.isLoggedIn()) {
             $location.path("/");
+        } else if (!($location.path() === "/login" || $location.path() === "/register") && !authenticationService.isLoggedIn()) {
+            $location.path("/login");
         }
 
-
-    })
+    });
 }
