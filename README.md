@@ -3,7 +3,7 @@
 
 ## Kinofy App
 
-This app is live at: https://kinofy.herokuapps.com
+This app is live at: https://kinofy.herokuapp.com
 
 ### Overview
 This app uses the OMDb and Spotify APIs to search for movie information and display matching soundtracks.
