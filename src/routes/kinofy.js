@@ -78,12 +78,15 @@ router.delete("/favorites/:id", auth, function (req, res, next) {
             return next();
         }
 
-        const userId = req.payload.id;
+        const userId = req.payload._id;
 
-        User.update({_id: userId}, {$pull: {favorites: soundtrack._id}}, function (error, updatedUser) {
+        User.update({_id: userId}, {$pull: {favorites: soundtrack._id}}, function (error, result) {
             if (error) {
                 return next(error);
-            } // ToDo: Add handling if user is not found
+            } if (!result) {
+                res.status(404);
+                return res.send();
+            }
             res.status(204);
             return res.send();
         });
