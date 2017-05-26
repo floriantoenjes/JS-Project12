@@ -101,7 +101,7 @@ angular.module("app")
         this.getFavoritesFromUser = function (id, callback) {
             vm.getUser(id, function (user) {
                 callback(user.favorites);
-            })
+            });
         };
 
     });
