@@ -106,7 +106,7 @@ router.get("/favorites/", auth, function (req, res, next) {
     });
 });
 
-router.get("/favorites/users/:userId", function (req, res, next) { // ToDo: add auth middleware
+router.get("/favorites/users/:userId", auth, function (req, res, next) {
     User.findOne({_id: req.params.userId}).populate("favorites").exec(function (error, user) {
         if (error) {
             return next(error);

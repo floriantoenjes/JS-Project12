@@ -38,8 +38,6 @@ angular.module("app")
             };
             authenticationService.register(userObject, function (error) {
                 if (error) {
-                    // ToDo: Remove this debug statement
-                    console.log("Error", error);
 
                     if (error.data.errors.email) {
                         if (error.data.errors.email.kind === "unique") {
