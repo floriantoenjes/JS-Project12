@@ -63,7 +63,7 @@ router.post("/favorites/", auth, function (req, res, next) {
         User.update({_id: userId}, {$addToSet: {favorites: soundtrack._id}}, function (error, updatedUser) {
             if (error) {
                 return next(error);
-            }
+            } // ToDo: Add handling if user is not found
             return res.json(updatedUser);
         });
     });
@@ -83,7 +83,7 @@ router.delete("/favorites/:id", auth, function (req, res, next) {
         User.update({_id: userId}, {$pull: {favorites: soundtrack._id}}, function (error, updatedUser) {
             if (error) {
                 return next(error);
-            }
+            } // ToDo: Add handling if user is not found
             res.status(204);
             return res.send();
         });

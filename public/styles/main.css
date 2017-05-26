@@ -143,4 +143,10 @@ body {
 
 #favorite-wrapper {
     background-color: black;
+    padding: 0em 5em 5em 5em;
+}
+
+#favorite-wrapper h2 {
+    margin: 1em 0;
+    font-family: Raleway, sans-serif;
 }
