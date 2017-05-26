@@ -37,11 +37,6 @@ angular.module("app")
             });
         };
 
-        $scope.logout = function () {
-            authenticationService.logout();
-            $location.path("/login");
-        };
-
 
         $scope.addFavorite = function (album) {
             dataService.addFavorite(album, function (error, response) {
@@ -56,6 +51,12 @@ angular.module("app")
             dataService.removeFavorite(album, function (error, response) {
                 $scope.favorites.splice($scope.favorites.indexOf(album.id), 1);
             })
+        };
+
+
+        $scope.logout = function () {
+            authenticationService.logout();
+            $location.path("/login");
         };
 
     });
