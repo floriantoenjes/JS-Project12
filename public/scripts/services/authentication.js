@@ -74,4 +74,16 @@ angular.module("app")
                 callback(albums);
             });
         };
+
+        this.getUsers = function (callback) {
+            $http.get("/api/v1/users",  {
+                headers: {
+                    Authorization: "Bearer " + vm.getToken()
+                }
+            }).then(function (response) {
+                const users = response.data;
+
+                callback(users);
+            })
+        };
     });
