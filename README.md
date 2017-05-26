@@ -11,6 +11,6 @@ The users have to register and are able to add soundtracks as their favorites as
 collections of other members.
 
 ### Technical Info
-This app uses and Express REST API in the backend and the AngularJS framework for the frontend.
+This app uses an Express REST API in the backend and the AngularJS framework for the frontend.
 Data is persisted in a MongoDb NoSQL database.
 
