@@ -13,6 +13,17 @@ const auth = jwt({
     userProperty: "payload"
 });
 
+router.get("/", auth, function (req, res, next) {
+    const userId = req.payload._id;
+    User.findById(userId).populate("favorites").exec(function (error, user) {
+        if (error) {
+            return next(error);
+        }
+        if (user && user.favorites) {
+            return res.send(user.favorites);
+        }
+    });
+});
 
 router.post("/", auth, function (req, res, next) {
     Soundtrack.findById(req.body.id, function (error, soundtrack) {
@@ -34,7 +45,6 @@ router.post("/", auth, function (req, res, next) {
         }
 
         const userId = req.payload._id;
-        console.log("UserId", userId);
 
         User.update({_id: userId}, {$addToSet: {favorites: soundtrack._id}}, function (error, updatedUser) {
             if (error) {
@@ -69,18 +79,6 @@ router.delete("/:id", auth, function (req, res, next) {
         });
     });
 
-});
-
-router.get("/", auth, function (req, res, next) {
-    const userId = req.payload._id;
-    User.findById(userId).populate("favorites").exec(function (error, user) {
-        if (error) {
-            return next(error);
-        }
-        if (user && user.favorites) {
-            return res.send(user.favorites);
-        }
-    });
 });
 
 router.get("/users/:userId", auth, function (req, res, next) {
