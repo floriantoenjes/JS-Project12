@@ -4,7 +4,7 @@
         <input ng-model="query" type="text" size="50" placeholder="Enter a movie title..." id="search-field"
                focus-me="true" class="form-control"/>
         <button type="submit" class="btn btn-primary" id="go-button">Go</button>
-        <button type="button" ng-click="logout()" class="btn btn-danger" id="logout">Logout</button>
+        <button ng-controller="LogoutController" type="button" ng-click="logout()" class="btn btn-danger" id="logout">Logout</button>
         <a ng-href="/#!/favorites">My Favorites</a>
         <a ng-href="/#!/users">Users</a>
     </form>

@@ -36,10 +36,4 @@ angular.module("app")
                 $scope.results = response.data;
             });
         };
-
-        $scope.logout = function () {
-            authenticationService.logout();
-            $location.path("/login");
-        };
-
     });
