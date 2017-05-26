@@ -106,8 +106,8 @@ router.get("/favorites/", auth, function (req, res, next) {
     });
 });
 
-router.get("/favorites/users/:email", function (req, res, next) { // ToDo: add auth middleware
-    User.findOne({email: req.params.email}).populate("favorites").exec(function (error, user) {
+router.get("/favorites/users/:userId", function (req, res, next) { // ToDo: add auth middleware
+    User.findOne({_id: req.params.userId}).populate("favorites").exec(function (error, user) {
         if (error) {
             return next(error);
         } else if (!user) {
