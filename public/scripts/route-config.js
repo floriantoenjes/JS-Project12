@@ -24,6 +24,11 @@ function config($routeProvider) {
             controllerAs: "vm",
             templateUrl: "templates/favorites.html"
         })
+        .when("/users", {
+            controller: "UsersController",
+            controllerAs: "vm",
+            templateUrl: "templates/users.html"
+        })
         .otherwise({
             redirectTo: "/"
         });

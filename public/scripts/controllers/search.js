@@ -54,4 +54,9 @@ angular.module("app")
             }
             return albumIds;
         }
+
+        //ToDo: Test area
+        authenticationService.getUsers(function (users) {
+            $scope.users = users;
+        });
     });
