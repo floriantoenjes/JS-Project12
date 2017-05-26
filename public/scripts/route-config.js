@@ -19,6 +19,11 @@ function config($routeProvider) {
             controllerAs: "vm",
             templateUrl: "templates/register.html"
         })
+        .when("/favorites", {
+            controller: "SearchController",
+            controllerAs: "vm",
+            templateUrl: "favorites.html"
+        })
         .otherwise({
             redirectTo: "/"
         });
