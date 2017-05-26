@@ -10,12 +10,11 @@ const router = express.Router();
 
 const auth = jwt({
     secret: process.env.SECRET,
-    userProperty: "payload"
+    userProperty: "user"
 });
 
 router.get("/", auth, function (req, res, next) {
-    const userId = req.payload._id;
-    User.findById(userId).populate("favorites").exec(function (error, user) {
+    User.findById(req.user._id).populate("favorites").exec(function (error, user) {
         if (error) {
             return next(error);
         }
@@ -44,9 +43,7 @@ router.post("/", auth, function (req, res, next) {
             });
         }
 
-        const userId = req.payload._id;
-
-        User.update({_id: userId}, {$addToSet: {favorites: soundtrack._id}}, function (error, updatedUser) {
+        User.update({_id: req.user._id}, {$addToSet: {favorites: soundtrack._id}}, function (error, updatedUser) {
             if (error) {
                 console.log(error);
                 return next(error);
@@ -65,9 +62,7 @@ router.delete("/:id", auth, function (req, res, next) {
             return next();
         }
 
-        const userId = req.payload._id;
-
-        User.update({_id: userId}, {$pull: {favorites: soundtrack._id}}, function (error, result) {
+        User.update({_id: req.user._id}, {$pull: {favorites: soundtrack._id}}, function (error, result) {
             if (error) {
                 return next(error);
             } if (!result) {

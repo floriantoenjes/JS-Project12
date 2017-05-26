@@ -8,7 +8,7 @@ const User = require("../models/user");
 
 const auth = jwt({
     secret: process.env.SECRET,
-    userProperty: "payload"
+    userProperty: "user"
 });
 
 router.get("/", auth, function (req, res, next) {
