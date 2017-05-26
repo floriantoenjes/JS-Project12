@@ -22,7 +22,7 @@ function config($routeProvider) {
         .when("/favorites", {
             controller: "SearchController",
             controllerAs: "vm",
-            templateUrl: "favorites.html"
+            templateUrl: "templates/favorites.html"
         })
         .otherwise({
             redirectTo: "/"
@@ -33,7 +33,7 @@ function run($rootScope, $location, authenticationService) {
     $rootScope.$on("$routeChangeStart", function (event, nextRoute, currentRoute) {
         if ($location.path() === "/" && !authenticationService.isLoggedIn()) {
             $location.path("/login");
-        } else if ($location.path !== "/" && authenticationService.isLoggedIn()) {
+        } else if (($location.path() === "/login" || $location.path() === "/register") && authenticationService.isLoggedIn()) {
             $location.path("/");
         }
     })
