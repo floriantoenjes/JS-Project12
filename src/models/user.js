@@ -21,8 +21,7 @@ const UserSchema = new mongoose.Schema({
     },
     favorites: [{
         type: String,
-        ref: "Soundtrack",
-        unique: true
+        ref: "Soundtrack"
     }]
 });
 
