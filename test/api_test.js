@@ -28,7 +28,6 @@ describe("user routes", function () {
                 .end(function (error, res) {
                     const result = JSON.parse(res.text);
                     token = result.token;
-                    console.log(result);
                     done();
                 });
         });
