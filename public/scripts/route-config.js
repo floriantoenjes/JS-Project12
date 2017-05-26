@@ -10,12 +10,12 @@ function config($routeProvider) {
             templateUrl: "templates/search.html"
         })
         .when("/login", {
-            controller: "UserController",
+            controller: "LoginController",
             controllerAs: "vm",
             templateUrl: "templates/login.html"
         })
         .when("/register", {
-            controller: "UserController",
+            controller: "RegisterController",
             controllerAs: "vm",
             templateUrl: "templates/register.html"
         })

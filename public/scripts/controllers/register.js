@@ -2,19 +2,9 @@
 
 angular.module("app")
 
-    .controller("UserController", function ($location, $scope, authenticationService) {
+    .controller("RegisterController", function ($location, $scope, authenticationService) {
 
         // Functions
-        $scope.login = function (user) {
-            authenticationService.login(user, function (error) {
-                if (error) {
-                    error.message = "Email or password do not match.";
-                    $scope.error = error;
-                }
-                $location.path("/");
-            });
-        };
-
         $scope.register = function (user) {
             if (!user) {
                 const error = new Error();
