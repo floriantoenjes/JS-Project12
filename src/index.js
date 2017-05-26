@@ -9,7 +9,7 @@ const morgan = require("morgan");
 
 const path = require("path");
 const kinofyRoutes = require("./routes/kinofy");
-
+const favoriteRoutes = require("./routes/favorites");
 const userRoutes = require("./routes/users");
 
 const app = express();
@@ -55,6 +55,8 @@ app.get("/vendor/angular-route.js", function (req, res) {
 
 // setup routes
 app.use("/api/v1/kinofy", kinofyRoutes);
+
+app.use("/api/v1/kinofy/favorites", favoriteRoutes);
 
 app.use("/api/v1/users", userRoutes);
 
