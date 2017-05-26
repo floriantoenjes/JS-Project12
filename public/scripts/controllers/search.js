@@ -11,6 +11,8 @@ angular.module("app")
             $scope.favorites = getAlbumIds(favorites);
         });
 
+
+        // Helper functions
         function getAlbumIds(albums) {
             const albumIds = [];
             for (let album of albums) {
