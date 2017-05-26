@@ -6,11 +6,17 @@ const User = require("../src/models/user");
 describe("user routes", function () {
     let server;
     let token = "";
+    let testUser2Id;
 
     const usersPath = "/api/v1/users";
 
     const testUser = {
         email: "testuser@test.com",
+        password: "password"
+    };
+
+    const testUser2 = {
+        email: "testuser2@test.com",
         password: "password"
     };
 
@@ -21,6 +27,14 @@ describe("user routes", function () {
             if (error) {
                 throw error;
             }
+
+            const user = new User(testUser2);
+            user.save(function (error, user) {
+                if (error) {
+                    throw error;
+                }
+                testUser2Id = user._id;
+            });
 
             request(server)
                 .post(`${usersPath}/register`)
@@ -57,6 +71,14 @@ describe("user routes", function () {
     it("should get all users", function (done) {
         request(server)
             .get(`${usersPath}`)
+            .set("Authorization", "Bearer " + token)
+            .expect(200)
+            .expect("Content-Type", "application/json; charset=utf-8", done);
+    });
+
+    it("should return a single user", function (done) {
+        request(server)
+            .get(`${usersPath}/${testUser2Id}`)
             .set("Authorization", "Bearer " + token)
             .expect(200)
             .expect("Content-Type", "application/json; charset=utf-8", done);
