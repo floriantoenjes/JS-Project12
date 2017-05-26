@@ -46,4 +46,19 @@ router.get("/", function (req, res, next) {
     })
 });
 
+router.get("/:userId", function (req, res, next) {
+    User.findById(req.params.userId, "email" ,function (error, user) {
+        if (error) {
+            return next(error);
+        } else if (!user) {
+            res.status(404);
+            res.send();
+        }
+        console.log("Single user:", user);
+        res.json(user);
+
+
+    });
+});
+
 module.exports = router;
