@@ -1,18 +1,28 @@
 "use strict";
 
 const request = require("supertest");
+const User = require("../src/models/user");
 
 describe("user routes", function () {
     let server;
     let token = "";
 
     before(function (done) {
+        User.remove({}, function (error) {
+            if (error) {
+                throw error;
+                done();
+            }
+
+
+        });
+
         server = require("../src/index");
 
         request(server)
-            .post("/api/v1/users/login")
+            .post("/api/v1/users/register")
             .send({
-                email: "skatepainter@yahoo.de",
+                email: "testuser@test.com",
                 password: "password"
             })
             .end(function (error, res) {
@@ -20,7 +30,7 @@ describe("user routes", function () {
                 token = result.token;
                 console.log(result);
                 done();
-            })
+            });
     });
 
     after(function (done) {
@@ -32,7 +42,7 @@ describe("user routes", function () {
         request(server)
             .post("/api/v1/users/login")
             .send({
-                email: "skatepainter@yahoo.de",
+                email: "testuser@test.com",
                 password: "password"
             })
             .expect(200)
