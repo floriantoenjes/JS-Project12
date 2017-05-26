@@ -87,16 +87,21 @@ angular.module("app")
             })
         };
 
-        this.getFavoritesFromUser = function (id, callback) {
+        this.getUser = function (id, callback) {
             $http.get(`/api/v1/users/${id}`, {
                 headers: {
                     Authorization: "Bearer " + vm.getToken()
                 }
             }).then(function (response) {
                 const user = response.data;
-
-                callback(user.favorites);
+                callback(user);
             });
+        };
+
+        this.getFavoritesFromUser = function (id, callback) {
+            vm.getUser(id, function (user) {
+                callback(user.favorites);
+            })
         };
 
     });
