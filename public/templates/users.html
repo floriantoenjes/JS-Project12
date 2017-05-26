@@ -2,7 +2,7 @@
     <p ng-if="error" class="error">{{error.message}}</p>
     <a ng-href="/#!">Back</a>
     <div id="favorite-wrapper">
-        <h2>Users</h2>
+        <h2>Browse Kinofy User Soundtrack Collections</h2>
         <div class="favorite-album" ng-repeat="user in users">
             <a ng-href="/#!/users/{{user._id}}">{{user.email}}</a>
         </div>

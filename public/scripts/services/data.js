@@ -25,8 +25,8 @@ angular.module("app")
             }).catch(callback);
         };
 
-        this.removeFavorite = function (album, callback) {
-            $http.delete(`/api/v1/kinofy/favorites/${album.id}`, {
+        this.removeFavorite = function (albumId, callback) {
+            $http.delete(`/api/v1/kinofy/favorites/${albumId}`, {
                 headers: {
                     Authorization: "Bearer " + authenticationService.getToken()
                 }

@@ -4,6 +4,7 @@
     <div id="favorite-wrapper">
         <h2>Favorite Soundtracks</h2>
         <div class="favorite-album" ng-repeat="favorite in favorites">
+            <button ng-click="removeFavoriteById(favorite._id)" id="remove-favorite-button" class="btn btn-danger favorite-button">Remove from Favorites</button>
             <img ng-src="{{favorite.imageUrl}}"/>
             <a ng-href="{{favorite.href}}" target="_blank">{{favorite.name}}</a>
         </div>
