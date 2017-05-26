@@ -30,7 +30,7 @@ function config($routeProvider) {
             templateUrl: "templates/users.html"
         })
         .when("/users/:id", {
-            controller: "UsersController",
+            controller: "UserFavoritesController",
             controllerAs: "vm",
             templateUrl: "templates/favorites.html"
         })

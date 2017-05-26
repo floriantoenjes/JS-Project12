@@ -86,4 +86,17 @@ angular.module("app")
                 callback(users);
             })
         };
+
+        this.getFavoritesFromUser = function (id, callback) {
+            $http.get(`/api/v1/kinofy/favorites/users/${id}`, {
+                headers: {
+                    Authorization: "Bearer " + vm.getToken()
+                }
+            }).then(function (response) {
+                const favorites = response.data;
+
+                callback(favorites);
+            });
+        };
+
     });
