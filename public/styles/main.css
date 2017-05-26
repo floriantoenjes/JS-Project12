@@ -135,3 +135,18 @@ body {
     padding-left: 1.5em;
     padding-right: 1.5em;
 }
+
+.favorite-button {
+    font-size: 0.75em;
+    float: right;
+}
+
+#favorite-wrapper {
+    background-color: black;
+    padding: 0em 5em 5em 5em;
+}
+
+#favorite-wrapper h2 {
+    margin: 1em 0;
+    font-family: Raleway, sans-serif;
+}

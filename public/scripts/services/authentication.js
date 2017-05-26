@@ -2,6 +2,7 @@
 
 angular.module("app")
 
+
     .service("authenticationService", function ($http, $window) {
         const vm = this;
 
@@ -38,6 +39,7 @@ angular.module("app")
         this.login = function (user, callback) {
             $http.post("/api/v1/users/login", user).then(function (response) {
                 vm.saveToken(response.data.token);
+
                 callback();
             }).catch(callback);
         };
@@ -47,7 +49,7 @@ angular.module("app")
                 vm.saveToken(response.data.token);
                 callback();
             }).catch(callback);
-        }
+        };
 
         this.currentUser = function () {
             if (vm.isLoggedIn()) {
@@ -59,5 +61,47 @@ angular.module("app")
                     email: payload.email
                 };
             }
-        }
+        };
+
+        this.getFavorites = function (callback) {
+            $http.get("/api/v1/kinofy/favorites/", {
+                headers: {
+                    Authorization: "Bearer " + vm.getToken()
+                }
+            }).then(function (response) {
+                const albums = response.data;
+
+                callback(albums);
+            });
+        };
+
+        this.getUsers = function (callback) {
+            $http.get("/api/v1/users",  {
+                headers: {
+                    Authorization: "Bearer " + vm.getToken()
+                }
+            }).then(function (response) {
+                const users = response.data;
+
+                callback(users);
+            })
+        };
+
+        this.getUser = function (id, callback) {
+            $http.get(`/api/v1/users/${id}`, {
+                headers: {
+                    Authorization: "Bearer " + vm.getToken()
+                }
+            }).then(function (response) {
+                const user = response.data;
+                callback(user);
+            });
+        };
+
+        this.getFavoritesFromUser = function (id, callback) {
+            vm.getUser(id, function (user) {
+                callback(user.favorites);
+            });
+        };
+
     });

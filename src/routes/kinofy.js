@@ -1,17 +1,12 @@
 "use strict";
 
+const auth = require("../auth");
 const express = require("express");
 const https = require("https");
-const jwt = require("express-jwt");
 
 const router = express.Router();
 
-const auth = jwt({
-    secret: process.env.SECRET,
-    userProperty: "payload"
-});
-
-router.get("/:query", auth, function (req, res, next) {
+router.get("/search/:query", auth, function (req, res, next) {
 
     doGETRequest(`https://www.omdbapi.com/?t=${req.params.query}&apikey=${process.env.OMDBKEY}`, (error, movie) => {
         if (error) {
@@ -33,6 +28,7 @@ router.get("/:query", auth, function (req, res, next) {
 
     });
 });
+
 
 function doGETRequest(url, callback) {
     const request = https.get(url, (response) => {

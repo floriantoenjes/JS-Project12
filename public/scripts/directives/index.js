@@ -1,4 +1,5 @@
 angular.module("app")
+
     .directive('focusMe', ['$timeout', '$parse', function ($timeout, $parse) {
         return {
             //scope: true,   // optionally create a child scope

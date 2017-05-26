@@ -2,8 +2,26 @@
 
 angular.module("app")
 
-    .controller("SearchController", function ($route, $scope, authenticationService, dataService) {
+    .controller("SearchController", function ($location, $scope, authenticationService, dataService) {
 
+        // Initialize Data
+        $scope.currentUser = authenticationService.currentUser();
+
+        authenticationService.getFavorites(function (favorites) {
+            $scope.favoriteIds = getAlbumIds(favorites);
+        });
+
+
+        // Helper functions
+        function getAlbumIds(albums) {
+            const albumIds = [];
+            for (let album of albums) {
+                albumIds.push(album._id);
+            }
+            return albumIds;
+        }
+
+        // Functions
         $scope.search = function (query) {
             if (query === undefined || query.trim().length === 0) {
                 return;
@@ -17,12 +35,5 @@ angular.module("app")
                 $scope.error = false;
                 $scope.results = response.data;
             });
-        };
-
-        $scope.currentUser = authenticationService.currentUser();
-
-        $scope.logout = function () {
-            authenticationService.logout();
-            $route.reload();
         };
     });

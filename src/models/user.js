@@ -1,3 +1,5 @@
+"use strict";
+
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
@@ -16,7 +18,11 @@ const UserSchema = new mongoose.Schema({
         required: true,
         minlength: 8,
         maxlength: 25
-    }
+    },
+    favorites: [{
+        type: String,
+        ref: "Soundtrack"
+    }]
 });
 
 UserSchema.statics.authenticate = function (email, password, callback) {
