@@ -1,15 +1,10 @@
 "use strict";
 
+const auth = require("../auth");
 const express = require("express");
-const jwt = require("express-jwt");
 const router = express.Router();
 
 const User = require("../models/user");
-
-const auth = jwt({
-    secret: process.env.SECRET,
-    userProperty: "user"
-});
 
 router.get("/", auth, function (req, res, next) {
     User.find({}, "email", function (error, users) {

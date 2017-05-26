@@ -1,15 +1,10 @@
 "use strict";
 
+const auth = require("../auth");
 const express = require("express");
 const https = require("https");
-const jwt = require("express-jwt");
 
 const router = express.Router();
-
-const auth = jwt({
-    secret: process.env.SECRET,
-    userProperty: "user"
-});
 
 router.get("/search/:query", auth, function (req, res, next) {
 

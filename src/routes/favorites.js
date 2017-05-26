@@ -1,17 +1,12 @@
 "use strict";
 
+const auth = require("../auth");
 const express = require("express");
-const jwt = require("express-jwt");
 
 const Soundtrack = require("../models/soundtrack");
 const User = require("../models/user");
 
 const router = express.Router();
-
-const auth = jwt({
-    secret: process.env.SECRET,
-    userProperty: "user"
-});
 
 router.get("/", auth, function (req, res, next) {
     User.findById(req.user._id).populate("favorites").exec(function (error, user) {
