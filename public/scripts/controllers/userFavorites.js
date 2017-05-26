@@ -2,7 +2,7 @@
 
 angular.module("app")
 
-    .controller("UserFavoritesController", function ($location, $scope, authenticationService) {
+    .controller("OtherFavoritesController", function ($location, $scope, authenticationService) {
 
         // Initialize Data
         $scope.backLink = "/#!/users";

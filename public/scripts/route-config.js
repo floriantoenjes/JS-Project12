@@ -3,6 +3,7 @@
 angular.module("app").config(config).run(run);
 
 function config($routeProvider) {
+
     $routeProvider
         .when("/", {
             controller: "SearchController",
@@ -20,7 +21,7 @@ function config($routeProvider) {
             templateUrl: "templates/register.html"
         })
         .when("/favorites", {
-            controller: "FavoritesController",
+            controller: "MyFavoritesController",
             controllerAs: "vm",
             templateUrl: "templates/favorites.html"
         })
@@ -30,7 +31,7 @@ function config($routeProvider) {
             templateUrl: "templates/users.html"
         })
         .when("/users/:id", {
-            controller: "UserFavoritesController",
+            controller: "OtherFavoritesController",
             controllerAs: "vm",
             templateUrl: "templates/favorites.html"
         })
