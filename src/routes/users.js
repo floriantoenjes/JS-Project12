@@ -35,8 +35,15 @@ router.post("/login", function (req, res, next) {
     });
 });
 
-router.get("/", function () {
-    
-})
+router.get("/", function (req, res, next) {
+    User.find({}, "email", function (error, users) {
+        if (error) {
+            return next(error);
+        } else if (!users) {
+            return next();
+        }
+        res.json(users);
+    })
+});
 
 module.exports = router;
