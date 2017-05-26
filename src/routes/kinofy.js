@@ -106,6 +106,22 @@ router.get("/favorites/", auth, function (req, res, next) {
     });
 });
 
+router.get("/favorites/users/:email", function (req, res, next) {
+    User.findOne({email: req.params.email}).populate("favorites").exec(function (error, user) {
+        if (error) {
+            return next(error);
+        } else if (!user) {
+            return next();
+        } else if (!user.favorites) {
+            res.status(404);
+            return res.send();
+        }
+        if (user && user.favorites) {
+            return res.json(user.favorites);
+        }
+    });
+});
+
 function doGETRequest(url, callback) {
     const request = https.get(url, (response) => {
         if (response.statusCode === 200) {
