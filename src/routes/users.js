@@ -1,7 +1,7 @@
 "use strict";
 
 const express = require("express");
-const jwt = require("express-jwt")
+const jwt = require("express-jwt");
 const router = express.Router();
 
 const User = require("../models/user");
@@ -44,10 +44,9 @@ router.post("/register", function (req, res, next) {
             error.status = 400;
             return next(error);
         }
-        const token = user.generateJwt();
         res.status(201);
         return res.json({
-            token: token
+            token: user.generateJwt()
         });
     })
 });
@@ -61,7 +60,7 @@ router.post("/login", function (req, res, next) {
             return res.send();
         }
         return res.json({
-            "token": user.generateJwt()
+            token: user.generateJwt()
         });
     });
 });
