@@ -12,9 +12,7 @@ angular.module("app")
             })
                 .then(function (response) {
                     callback(null, response);
-                }).catch(function (error) {
-                    callback(error);
-            });
+                }).catch(callback);
         };
 
         this.addFavorite = function (album, callback) {
@@ -23,8 +21,8 @@ angular.module("app")
                     Authorization: "Bearer " + authenticationService.getToken()
                 }
             }).then(function (response) {
-                callback(null, response)
-            });
+                callback(null, response);
+            }).catch(callback);
         };
 
         this.removeFavorite = function (album, callback) {
@@ -32,7 +30,9 @@ angular.module("app")
                 headers: {
                     Authorization: "Bearer " + authenticationService.getToken()
                 }
-            }).then(callback);
+            }).then(function (response) {
+                callback(null, response);
+            }).catch(callback);
 
         };
     });

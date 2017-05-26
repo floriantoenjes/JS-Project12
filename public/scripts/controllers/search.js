@@ -33,14 +33,13 @@ angular.module("app")
 
 
         $scope.addFavorite = function (album) {
-            dataService.addFavorite(album, function (response) {
-                console.log(response);
+            dataService.addFavorite(album, function (error, response) {
                 $scope.favorites.push(album.id);
             });
         };
 
         $scope.removeFavorite = function (album) {
-            dataService.removeFavorite(album, function () {
+            dataService.removeFavorite(album, function (error, response) {
                 $scope.favorites.splice($scope.favorites.indexOf(album.id), 1);
             })
         }
