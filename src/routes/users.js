@@ -61,7 +61,6 @@ router.post("/login", function (req, res, next) {
         return res.json({
             "token": user.generateJwt()
         });
-
     });
 });
 

@@ -122,6 +122,7 @@ router.get("/favorites/users/:userId", function (req, res, next) { // ToDo: add 
     });
 });
 
+
 function doGETRequest(url, callback) {
     const request = https.get(url, (response) => {
         if (response.statusCode === 200) {
