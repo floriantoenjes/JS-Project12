@@ -35,5 +35,8 @@ router.post("/login", function (req, res, next) {
     });
 });
 
+router.get("/", function () {
+    
+})
 
 module.exports = router;
