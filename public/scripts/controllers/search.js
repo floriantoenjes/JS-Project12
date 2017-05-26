@@ -8,7 +8,7 @@ angular.module("app")
         $scope.currentUser = authenticationService.currentUser();
 
         authenticationService.getFavorites(function (favorites) {
-            $scope.favorites = getAlbumIds(favorites);
+            $scope.favoriteIds = getAlbumIds(favorites);
         });
 
 
@@ -36,23 +36,6 @@ angular.module("app")
                 $scope.results = response.data;
             });
         };
-
-
-        $scope.addFavorite = function (album) {
-            dataService.addFavorite(album, function (error, response) {
-                if (!$scope.favorites) {
-                    $scope.favorites = [];
-                }
-                $scope.favorites.push(album.id);
-            });
-        };
-
-        $scope.removeFavorite = function (album) {
-            dataService.removeFavorite(album, function (error, response) {
-                $scope.favorites.splice($scope.favorites.indexOf(album.id), 1);
-            })
-        };
-
 
         $scope.logout = function () {
             authenticationService.logout();
