@@ -22,7 +22,17 @@ angular.module("app")
                 headers: {
                     Authorization: "Bearer " + authenticationService.getToken()
                 }
-            }).then(callback);
-        }
+            }).then(function (response) {
+                callback(null, response)
+            });
+        };
 
+        this.removeFavorite = function (album, callback) {
+            $http.delete(`/api/v1/kinofy/favorites/${album.id}`, {
+                headers: {
+                    Authorization: "Bearer " + authenticationService.getToken()
+                }
+            }).then(callback);
+
+        };
     });

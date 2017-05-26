@@ -33,8 +33,15 @@ angular.module("app")
 
 
         $scope.addFavorite = function (album) {
-            dataService.addFavorite(album, function () {
+            dataService.addFavorite(album, function (response) {
+                console.log(response);
                 $scope.favorites.push(album.id);
             });
         };
+
+        $scope.removeFavorite = function (album) {
+            dataService.removeFavorite(album, function () {
+                $scope.favorites.splice($scope.favorites.indexOf(album.id), 1);
+            })
+        }
     });
