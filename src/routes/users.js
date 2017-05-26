@@ -1,10 +1,38 @@
 "use strict";
 
 const express = require("express");
+const jwt = require("express-jwt")
 const router = express.Router();
 
 const User = require("../models/user");
 
+const auth = jwt({
+    secret: process.env.SECRET,
+    userProperty: "payload"
+});
+
+router.get("/", auth, function (req, res, next) {
+    User.find({}, "email", function (error, users) {
+        if (error) {
+            return next(error);
+        } else if (!users) {
+            return next();
+        }
+        res.json(users);
+    })
+});
+
+router.get("/:userId", auth, function (req, res, next) {
+    User.findById(req.params.userId, "email" ,function (error, user) {
+        if (error) {
+            return next(error);
+        } else if (!user) {
+            res.status(404);
+            res.send();
+        }
+        res.json(user);
+    });
+});
 
 router.post("/register", function (req, res, next) {
     const user = new User(req.body);
@@ -33,32 +61,6 @@ router.post("/login", function (req, res, next) {
         return res.json({
             "token": user.generateJwt()
         });
-
-    });
-});
-
-router.get("/", function (req, res, next) {
-    User.find({}, "email", function (error, users) {
-        if (error) {
-            return next(error);
-        } else if (!users) {
-            return next();
-        }
-        res.json(users);
-    })
-});
-
-router.get("/:userId", function (req, res, next) {
-    User.findById(req.params.userId, "email" ,function (error, user) {
-        if (error) {
-            return next(error);
-        } else if (!user) {
-            res.status(404);
-            res.send();
-        }
-        console.log("Single user:", user);
-        res.json(user);
-
 
     });
 });
