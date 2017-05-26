@@ -2,9 +2,15 @@
 #### Build Your Own Web Application
 
 ## Kinofy App
+
+This app is live at: https://kinofy.herokuapps.com
+
+### Overview
 This app uses the OMDb and Spotify APIs to search for movie information and display matching soundtracks.
 The users have to register and are able to add soundtracks as their favorites as well as view the soundtrack 
 collections of other members.
 
+### Technical Info
 This app uses and Express REST API in the backend and the AngularJS framework for the frontend.
 Data is persisted in a MongoDb NoSQL database.
+
