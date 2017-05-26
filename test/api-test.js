@@ -11,12 +11,12 @@ describe("user routes", function () {
     const usersPath = "/api/v1/users";
 
     const testUser = {
-        email: "testuser@test.com",
+        email: "user@test.com",
         password: "password"
     };
 
     const testUser2 = {
-        email: "testuser2@test.com",
+        email: "user2@test.com",
         password: "password"
     };
 
