@@ -3,6 +3,8 @@
 angular.module("app")
 
     .controller("UserController", function ($location, $scope, authenticationService) {
+
+        // Functions
         $scope.login = function (user) {
             authenticationService.login(user, function (error) {
                 if (error) {
@@ -36,6 +38,7 @@ angular.module("app")
                 email: user.email,
                 password: user.password
             };
+
             authenticationService.register(userObject, function (error) {
                 if (error) {
 

@@ -15,6 +15,7 @@ router.get("/", auth, function (req, res, next) {
         } else if (!user) {
             return next();
         }
+
         if (user && user.favorites) {
             return res.send(user.favorites);
         }
@@ -26,12 +27,14 @@ router.post("/", auth, function (req, res, next) {
         if (error) {
             return next(error);
         } else if (!soundtrack) {
+
             soundtrack = new Soundtrack({
                 _id: req.body.id,
                 name: req.body.name,
                 href: req.body.external_urls.spotify,
                 imageUrl: req.body.images[2].url
             });
+
             soundtrack.save(function (error, soundtrack) {
                 if (error) {
                     return next(error);

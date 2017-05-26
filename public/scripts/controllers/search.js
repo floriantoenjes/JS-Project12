@@ -4,6 +4,7 @@ angular.module("app")
 
     .controller("SearchController", function ($location, $scope, authenticationService, dataService) {
 
+        // Initialize Data
         $scope.currentUser = authenticationService.currentUser();
 
         authenticationService.getFavorites(function (favorites) {
@@ -11,6 +12,7 @@ angular.module("app")
         });
 
 
+        // Functions
         $scope.search = function (query) {
             if (query === undefined || query.trim().length === 0) {
                 return;
@@ -45,7 +47,7 @@ angular.module("app")
             dataService.removeFavorite(album, function (error, response) {
                 $scope.favorites.splice($scope.favorites.indexOf(album.id), 1);
             })
-        }
+        };
 
         function getAlbumIds(albums) {
             const albumIds = [];
@@ -55,8 +57,4 @@ angular.module("app")
             return albumIds;
         }
 
-        //ToDo: Test area
-        authenticationService.getUsers(function (users) {
-            $scope.users = users;
-        });
     });
