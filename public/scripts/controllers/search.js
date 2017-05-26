@@ -7,7 +7,7 @@ angular.module("app")
         $scope.currentUser = authenticationService.currentUser();
 
         authenticationService.getFavorites(function (favorites) {
-            $scope.favorites = favorites;
+            $scope.favorites = getAlbumIds(favorites);
         });
 
 
@@ -42,5 +42,13 @@ angular.module("app")
             dataService.removeFavorite(album, function (error, response) {
                 $scope.favorites.splice($scope.favorites.indexOf(album.id), 1);
             })
+        }
+
+        function getAlbumIds(albums) {
+            const albumIds = [];
+            for (let album of albums) {
+                albumIds.push(album._id);
+            }
+            return albumIds;
         }
     });

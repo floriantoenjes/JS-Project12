@@ -46,7 +46,7 @@ router.post("/favorites/", auth, function (req, res, next) {
             soundtrack = new Soundtrack({
                 _id: req.body.id,
                 name: req.body.name,
-                href: req.body.href,
+                href: req.body.external_urls.spotify,
                 imageUrl: req.body.images[2].url
             });
             soundtrack.save(function (error, soundtrack) {
@@ -58,6 +58,7 @@ router.post("/favorites/", auth, function (req, res, next) {
         }
 
         const userId = req.payload._id;
+        console.log("UserId", userId);
 
         User.update({_id: userId}, {$addToSet: {favorites: soundtrack._id}}, function (error, updatedUser) {
             if (error) {
@@ -96,7 +97,7 @@ router.get("/favorites/", auth, function (req, res, next) {
         if (error) {
             return next(error);
         }
-        if (user.favorites) {
+        if (user && user.favorites) {
             return res.send(user.favorites);
         }
     });

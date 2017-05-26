@@ -35,4 +35,5 @@ angular.module("app")
             }).catch(callback);
 
         };
+
     });

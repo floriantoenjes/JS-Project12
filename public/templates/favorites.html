@@ -1,33 +1,10 @@
 <div id="wrapper" class="container">
     <p ng-if="error" class="error">{{error.message}}</p>
-    <form ng-submit="search(query)" id="search-form" class="form-inline">
-        <input ng-model="query" type="text" size="50" placeholder="Enter a movie title..." id="search-field"
-               focus-me="true" class="form-control"/>
-        <button type="submit" class="btn btn-primary" id="go-button">Go</button>
-        <button type="button" ng-click="logout()" class="btn btn-danger" id="logout">Logout</button>
-    </form>
-    <div ng-if="results.movie" id="movie-wrapper" class="row">
-        <div ng-if="results.movie.Poster !== 'N/A'" id="poster" class="col-md-4"><img ng-src="{{results.movie.Poster}}"/></div>
-        <div ng-class="{'no-movie': results.movie.Poster === 'N/A'}" id="movie" class="col-md-4">
-            <div id="movie-info">
-                <h2>{{results.movie.Title}}</h2>
-                <p>Year: {{results.movie.Year}}</p>
-                <p>Runtime: {{results.movie.Runtime}}</p>
-                <p>Director: {{results.movie.Director}}</p>
-                <p>Actors: {{results.movie.Actors}}</p>
-                <p>Genre: {{results.movie.Genre}}</p>
-                <p>IMDb Rating: {{results.movie.imdbRating}}</p>
-                <p>Metascore: {{results.movie.Metascore}}</p>
-                <p id="plot">{{results.movie.Plot}}</p>
-            </div>
-        </div>
-        <div ng-if="results.soundtracks" id="albums" class="col-md-4">
-            <h2>Soundtracks</h2>
-            <p ng-repeat="album in results.soundtracks.albums.items"><img ng-src="{{album.images[2].url}}"/>
-                <button ng-if="!(favorites.indexOf(album.id) > -1)" ng-click="addFavorite(album)"  class="btn btn-primary favorite-button">Add to Favorites</button>
-                <button ng-if="favorites.indexOf(album.id) > -1" ng-click="removeFavorite(album)" id="remove-favorite-button" class="btn btn-danger favorite-button">Remove from Favorites</button>
-                <a ng-href="{{album.external_urls.spotify}}" target="_blank">{{album.name}}</a>
-            </p>
+    <div id="favorite-wrapper">
+        <h2>Favorites</h2>
+        <div class="favorite-album" ng-repeat="favorite in favorites">
+            <img ng-src="{{favorite.imageUrl}}"/>
+            <a ng-href="{{favorite.href}}" target="_blank">{{favorite.name}}</a>
         </div>
     </div>
 </div>

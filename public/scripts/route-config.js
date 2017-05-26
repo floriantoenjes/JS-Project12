@@ -20,7 +20,7 @@ function config($routeProvider) {
             templateUrl: "templates/register.html"
         })
         .when("/favorites", {
-            controller: "SearchController",
+            controller: "FavoritesController",
             controllerAs: "vm",
             templateUrl: "templates/favorites.html"
         })

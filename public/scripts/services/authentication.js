@@ -71,15 +71,7 @@ angular.module("app")
             }).then(function (response) {
                 const albums = response.data;
 
-                callback(getAlbumIds(albums));
+                callback(albums);
             });
         };
-
-        function getAlbumIds(albums) {
-            const albumIds = [];
-            for (let album of albums) {
-                albumIds.push(album._id);
-            }
-            return albumIds;
-        }
     });
