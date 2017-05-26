@@ -17,6 +17,8 @@ router.get("/", auth, function (req, res, next) {
     User.findById(req.user._id).populate("favorites").exec(function (error, user) {
         if (error) {
             return next(error);
+        } else if (!user) {
+            return next();
         }
         if (user && user.favorites) {
             return res.send(user.favorites);

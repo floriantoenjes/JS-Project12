@@ -41,7 +41,6 @@ router.post("/register", function (req, res, next) {
 
     user.save(function (error, user) {
         if (error) {
-            console.log(error);
             error.status = 400;
             return next(error);
         }
