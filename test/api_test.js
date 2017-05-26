@@ -8,29 +8,28 @@ describe("user routes", function () {
     let token = "";
 
     before(function (done) {
+        server = require("../src/index");
+
         User.remove({}, function (error) {
             if (error) {
                 throw error;
-                done();
             }
 
-
+            request(server)
+                .post("/api/v1/users/register")
+                .send({
+                    email: "testuser@test.com",
+                    password: "password"
+                })
+                .end(function (error, res) {
+                    const result = JSON.parse(res.text);
+                    token = result.token;
+                    console.log(result);
+                    done();
+                });
         });
 
-        server = require("../src/index");
 
-        request(server)
-            .post("/api/v1/users/register")
-            .send({
-                email: "testuser@test.com",
-                password: "password"
-            })
-            .end(function (error, res) {
-                const result = JSON.parse(res.text);
-                token = result.token;
-                console.log(result);
-                done();
-            });
     });
 
     after(function (done) {
