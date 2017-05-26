@@ -56,9 +56,7 @@ app.get("/vendor/angular-route.js", function (req, res) {
 
 // Setup routes
 app.use("/api/v1/kinofy", kinofyRoutes);
-
 app.use("/api/v1/kinofy/favorites", favoriteRoutes);
-
 app.use("/api/v1/users", userRoutes);
 
 app.use(function (error, req, res, next) {
@@ -71,3 +69,5 @@ app.use(function (error, req, res, next) {
 const server = app.listen(app.get("port"), function () {
     console.log("Express server listening on port " + server.address().port);
 });
+
+module.exports = server;
