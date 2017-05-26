@@ -4,8 +4,9 @@ angular.module("app")
 
     .controller("UserFavoritesController", function ($location, $scope, authenticationService) {
 
+        $scope.backLink = "/#!/users";
+
         authenticationService.getFavoritesFromUser($location.path().split("/")[2], function (favorites) {
-            console.log("Location:", $location.path().split("/")[2]);
             $scope.favorites = favorites;
         });
 

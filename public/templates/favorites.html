@@ -1,6 +1,6 @@
 <div id="wrapper" class="container">
     <p ng-if="error" class="error">{{error.message}}</p>
-    <a ng-href="/#!">Back</a>
+    <a ng-href="{{backLink}}">Back</a>
     <div id="favorite-wrapper">
         <h2>Favorite Soundtracks</h2>
         <div class="favorite-album" ng-repeat="favorite in favorites">
