@@ -37,7 +37,6 @@ router.post("/", auth, function (req, res, next) {
             });
             soundtrack.save(function (error, soundtrack) {
                 if (error) {
-                    console.log(error);
                     return next(error);
                 }
             });
@@ -45,7 +44,6 @@ router.post("/", auth, function (req, res, next) {
 
         User.update({_id: req.user._id}, {$addToSet: {favorites: soundtrack._id}}, function (error, updatedUser) {
             if (error) {
-                console.log(error);
                 return next(error);
             } // ToDo: Add handling if user is not found
             return res.json(updatedUser);

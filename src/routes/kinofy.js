@@ -8,11 +8,10 @@ const router = express.Router();
 
 const auth = jwt({
     secret: process.env.SECRET,
-    userProperty: "payload"
+    userProperty: "user"
 });
 
 router.get("/search/:query", auth, function (req, res, next) {
-    console.log("Payload", req.payload);
 
     doGETRequest(`https://www.omdbapi.com/?t=${req.params.query}&apikey=${process.env.OMDBKEY}`, (error, movie) => {
         if (error) {
