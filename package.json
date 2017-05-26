@@ -1,6 +1,6 @@
 {
-  "name": "cinefy",
-  "version": "0.0.1",
+  "name": "kinofy",
+  "version": "0.0.3",
   "description": "Search movie soundtracks through spotify",
   "main": "src/app.js",
   "scripts": {
