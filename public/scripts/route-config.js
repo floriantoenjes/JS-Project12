@@ -23,7 +23,7 @@ function config($routeProvider) {
         .when("/favorites", {
             controller: "MyFavoritesController",
             controllerAs: "vm",
-            templateUrl: "templates/favorites.html"
+            templateUrl: "templates/my-favorites.html"
         })
         .when("/users", {
             controller: "UsersController",
@@ -33,7 +33,7 @@ function config($routeProvider) {
         .when("/users/:id", {
             controller: "OtherFavoritesController",
             controllerAs: "vm",
-            templateUrl: "templates/favorites.html"
+            templateUrl: "templates/other-favorites.html"
         })
         .otherwise({
             redirectTo: "/"

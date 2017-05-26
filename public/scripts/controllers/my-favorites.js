@@ -5,8 +5,6 @@ angular.module("app")
     .controller("MyFavoritesController", function ($scope, authenticationService, dataService) {
 
         // Initialize Data
-        $scope.backLink = "/#!";
-
         authenticationService.getFavorites(function (albums) {
             $scope.favorites = albums;
         });
