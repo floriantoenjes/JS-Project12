@@ -76,6 +76,12 @@ describe("user routes", function () {
             .expect("Content-Type", "application/json; charset=utf-8", done);
     });
 
+    it("should not return a single user but unauthorized", function (done) {
+        request(server)
+            .get(`${usersPath}/${testUser2Id}`)
+            .expect(401, done);
+    });
+
     it("should return a single user", function (done) {
         request(server)
             .get(`${usersPath}/${testUser2Id}`)
