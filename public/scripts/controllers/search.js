@@ -34,7 +34,7 @@ angular.module("app")
 
         $scope.addFavorite = function (album) {
             dataService.addFavorite(album, function (error, response) {
-                if ($scope.favorites) {
+                if (!$scope.favorites) {
                     $scope.favorites = [];
                 }
                 $scope.favorites.push(album.id);
