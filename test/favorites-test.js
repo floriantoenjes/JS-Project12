@@ -4,7 +4,7 @@ const request = require("supertest");
 const User = require("../src/models/user");
 const assert = require("assert");
 
-describe("user routes", function () {
+describe("favorite routes", function () {
     let server;
     let token = "";
 
@@ -86,7 +86,10 @@ describe("user routes", function () {
                 assert.equal(response.body.ok, 1);
                 assert.equal(response.body.nModified, 1);
                 assert.equal(response.body.n, 1);
-                done();
+                User.findOne({email: "user@test.com"}, function (error, user) {
+                    assert.equal(user.favorites.length, 1);
+                    done();
+                });
             });
     });
 
@@ -98,7 +101,13 @@ describe("user routes", function () {
         request(server)
             .delete(`${favoritesPath}/6hmmX5UP4rIvOpGSaPerV8`)
             .set("Authorization", "Bearer " + token)
-            .expect(204, done);
+            .expect(204)
+            .end(function (error, response) {
+                User.findOne({email: "user@test.com"}, function (error, user) {
+                    assert.equal(user.favorites.length, 0);
+                    done();
+                });
+            });
     });
 
 });

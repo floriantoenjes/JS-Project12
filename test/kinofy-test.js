@@ -4,7 +4,7 @@ const request = require("supertest");
 const User = require("../src/models/user");
 const assert = require("assert");
 
-describe("user routes", function () {
+describe("kinofy routes", function () {
     let server;
     let token = "";
 
