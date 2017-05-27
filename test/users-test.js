@@ -78,7 +78,7 @@ describe("user routes", function () {
             .expect(200)
             .expect("Content-Type", "application/json; charset=utf-8")
             .end(function (error, response) {
-                assert(response.body.length, 2);
+                assert.equal(response.body.length, 2);
                 done();
             });
 
@@ -97,7 +97,7 @@ describe("user routes", function () {
             .expect(200)
             .expect("Content-Type", "application/json; charset=utf-8")
             .end(function (error, response) {
-                assert(response.body.email, "user2@test.com");
+                assert.equal(response.body.email, "user2@test.com");
                 done();
             });
     });
