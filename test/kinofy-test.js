@@ -71,7 +71,6 @@ describe("user routes", function () {
             .expect(200)
             .expect("Content-Type", "application/json; charset=utf-8")
             .end(function (error, response) {
-                console.log(response.body);
                 assert(response.body.movie);
                 assert(response.body.soundtracks);
                 done();

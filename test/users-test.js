@@ -97,7 +97,6 @@ describe("user routes", function () {
             .expect(200)
             .expect("Content-Type", "application/json; charset=utf-8")
             .end(function (error, response) {
-                console.log(response.body);
                 assert(response.body.email, "user2@test.com");
                 done();
             });
