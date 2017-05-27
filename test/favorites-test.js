@@ -38,6 +38,11 @@ describe("user routes", function () {
 
     });
 
+    after(function (done) {
+        server.close();
+        done();
+    });
+
     it("should add a favorite", function (done) {
         request(server)
             .post(`${favoritesPath}`)
@@ -85,9 +90,15 @@ describe("user routes", function () {
             });
     });
 
-    after(function (done) {
-        server.close();
+    it("should get a favorite", function (done) {
         done();
+    });
+
+    it("should remove a favorite", function (done) {
+        request(server)
+            .delete(`${favoritesPath}/6hmmX5UP4rIvOpGSaPerV8`)
+            .set("Authorization", "Bearer " + token)
+            .expect(204, done);
     });
 
 });
