@@ -28,22 +28,24 @@ describe("user routes", function () {
                 throw error;
             }
 
-            const user = new User(testUser2);
-            user.save(function (error, user) {
+        }).then(function () {
+            const user2 = new User(testUser2);
+
+            user2.save(function (error, user) {
                 if (error) {
                     throw error;
                 }
                 testUser2Id = user._id;
+            }).then(function () {
+                request(server)
+                    .post(`${usersPath}/register`)
+                    .send(testUser)
+                    .end(function (error, res) {
+                        const result = JSON.parse(res.text);
+                        token = result.token;
+                        done();
+                    });
             });
-
-            request(server)
-                .post(`${usersPath}/register`)
-                .send(testUser)
-                .end(function (error, res) {
-                    const result = JSON.parse(res.text);
-                    token = result.token;
-                    done();
-                });
         });
 
 
