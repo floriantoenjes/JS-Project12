@@ -7,7 +7,7 @@ angular.module("app")
         // Initialize Data
         $scope.currentUser = authenticationService.currentUser();
 
-        authenticationService.getFavorites(function (favorites) {
+        authenticationService.getMyFavorites(function (favorites) {
             $scope.favoriteIds = getAlbumIds(favorites);
         });
 

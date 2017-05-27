@@ -64,7 +64,7 @@ angular.module("app")
             }
         };
 
-        this.getFavorites = function (callback) {
+        this.getMyFavorites = function (callback) {
             $http.get("/api/v1/kinofy/favorites/", {
                 headers: {
                     Authorization: "Bearer " + vm.getToken()
@@ -76,7 +76,7 @@ angular.module("app")
             });
         };
 
-        this.getUsers = function (callback) {
+        this.getAllUsers = function (callback) {
             $http.get("/api/v1/users",  {
                 headers: {
                     Authorization: "Bearer " + vm.getToken()

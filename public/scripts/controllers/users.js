@@ -5,7 +5,7 @@ angular.module("app")
     .controller("UsersController", function ($location, $scope, authenticationService) {
 
         // Initialize Data
-        authenticationService.getUsers(function (users) {
+        authenticationService.getAllUsers(function (users) {
             $scope.users = users
         });
 

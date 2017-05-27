@@ -5,7 +5,7 @@ angular.module("app")
     .controller("MyFavoritesController", function ($scope, authenticationService, dataService) {
 
         // Initialize Data
-        authenticationService.getFavorites(function (albums) {
+        authenticationService.getMyFavorites(function (albums) {
             $scope.favorites = albums;
         });
 
@@ -27,7 +27,7 @@ angular.module("app")
 
         $scope.removeFavoriteById = function (albumId) {
             dataService.removeFavorite(albumId, function (error, response) {
-                authenticationService.getFavorites(function (albums) {
+                authenticationService.getMyFavorites(function (albums) {
                     $scope.favorites = albums;
                 });
 
