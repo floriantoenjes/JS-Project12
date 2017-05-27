@@ -2,6 +2,7 @@
 
 const request = require("supertest");
 const User = require("../src/models/user");
+const assert = require("assert");
 
 describe("user routes", function () {
     let server;
@@ -75,7 +76,12 @@ describe("user routes", function () {
             .get(`${usersPath}`)
             .set("Authorization", "Bearer " + token)
             .expect(200)
-            .expect("Content-Type", "application/json; charset=utf-8", done);
+            .expect("Content-Type", "application/json; charset=utf-8")
+            .end(function (error, response) {
+                assert(response.body.length, 2);
+                done();
+            });
+
     });
 
     it("should not return a single user but unauthorized", function (done) {
@@ -89,7 +95,12 @@ describe("user routes", function () {
             .get(`${usersPath}/${testUser2Id}`)
             .set("Authorization", "Bearer " + token)
             .expect(200)
-            .expect("Content-Type", "application/json; charset=utf-8", done);
+            .expect("Content-Type", "application/json; charset=utf-8")
+            .end(function (error, response) {
+                console.log(response.body);
+                assert(response.body.email, "user2@test.com");
+                done();
+            });
     });
 
 });
