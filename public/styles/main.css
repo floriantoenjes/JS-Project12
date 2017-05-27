@@ -4,6 +4,7 @@ body {
     color: white;
     background-size: cover;
     background: black url("../img/kinofy_background.jpg") no-repeat;
+    background-size: cover;
     height: 98%;
 }
 

@@ -46,6 +46,7 @@ router.post("/", auth, function (req, res, next) {
             if (error) {
                 return next(error);
             } // ToDo: Add handling if user is not found
+            console.log(result);
             return res.json(result);
         });
     });
