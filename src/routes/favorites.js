@@ -45,8 +45,7 @@ router.post("/", auth, function (req, res, next) {
         User.update({_id: req.user._id}, {$addToSet: {favorites: soundtrack._id}}, function (error, result) {
             if (error) {
                 return next(error);
-            } // ToDo: Add handling if user is not found
-            console.log(result);
+            }
             return res.json(result);
         });
     });
