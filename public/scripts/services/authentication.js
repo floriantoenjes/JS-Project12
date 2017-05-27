@@ -64,45 +64,4 @@ angular.module("app")
             }
         };
 
-        this.getMyFavorites = function (callback) {
-            $http.get("/api/v1/kinofy/favorites/", {
-                headers: {
-                    Authorization: "Bearer " + vm.getToken()
-                }
-            }).then(function (response) {
-                const albums = response.data;
-
-                callback(albums);
-            });
-        };
-
-        this.getAllUsers = function (callback) {
-            $http.get("/api/v1/users",  {
-                headers: {
-                    Authorization: "Bearer " + vm.getToken()
-                }
-            }).then(function (response) {
-                const users = response.data;
-
-                callback(users);
-            })
-        };
-
-        this.getUser = function (id, callback) {
-            $http.get(`/api/v1/users/${id}`, {
-                headers: {
-                    Authorization: "Bearer " + vm.getToken()
-                }
-            }).then(function (response) {
-                const user = response.data;
-                callback(user);
-            });
-        };
-
-        this.getFavoritesFromUser = function (id, callback) {
-            vm.getUser(id, function (user) {
-                callback(user.favorites);
-            });
-        };
-
     });

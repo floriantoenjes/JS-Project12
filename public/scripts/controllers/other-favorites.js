@@ -2,10 +2,10 @@
 
 angular.module("app")
 
-    .controller("OtherFavoritesController", function ($location, $scope, authenticationService) {
+    .controller("OtherFavoritesController", function ($location, $scope, favoriteService) {
 
         // Initialize Data
-        authenticationService.getFavoritesFromUser($location.path().split("/")[2], function (favorites) {
+        favoriteService.getFavoritesFromUser($location.path().split("/")[2], function (favorites) {
             $scope.favorites = favorites;
         });
 

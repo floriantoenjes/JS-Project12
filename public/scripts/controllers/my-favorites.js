@@ -2,16 +2,16 @@
 
 angular.module("app")
 
-    .controller("MyFavoritesController", function ($scope, authenticationService, dataService) {
+    .controller("MyFavoritesController", function ($scope, authenticationService, favoriteService) {
 
         // Initialize Data
-        authenticationService.getMyFavorites(function (albums) {
+        favoriteService.getMyFavorites(function (albums) {
             $scope.favorites = albums;
         });
 
         // Functions
         $scope.addFavorite = function (album) {
-            dataService.addFavorite(album, function (error, response) {
+            favoriteService.addFavorite(album, function (error, response) {
                 if (!$scope.favoriteIds) {
                     $scope.favoriteIds = [];
                 }
@@ -20,14 +20,14 @@ angular.module("app")
         };
 
         $scope.removeFavorite = function (album) {
-            dataService.removeFavorite(album.id, function (error, response) {
+            favoriteService.removeFavorite(album.id, function (error, response) {
                 $scope.favoriteIds.splice($scope.favorites.indexOf(album), 1);
             })
         };
 
         $scope.removeFavoriteById = function (albumId) {
-            dataService.removeFavorite(albumId, function (error, response) {
-                authenticationService.getMyFavorites(function (albums) {
+            favoriteService.removeFavorite(albumId, function (error, response) {
+                favoriteService.getMyFavorites(function (albums) {
                     $scope.favorites = albums;
                 });
 

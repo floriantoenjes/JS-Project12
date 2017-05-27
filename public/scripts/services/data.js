@@ -15,25 +15,4 @@ angular.module("app")
                 }).catch(callback);
         };
 
-        this.addFavorite = function (album, callback) {
-            $http.post("/api/v1/kinofy/favorites", album, {
-                headers: {
-                    Authorization: "Bearer " + authenticationService.getToken()
-                }
-            }).then(function (response) {
-                callback(null, response);
-            }).catch(callback);
-        };
-
-        this.removeFavorite = function (albumId, callback) {
-            $http.delete(`/api/v1/kinofy/favorites/${albumId}`, {
-                headers: {
-                    Authorization: "Bearer " + authenticationService.getToken()
-                }
-            }).then(function (response) {
-                callback(null, response);
-            }).catch(callback);
-
-        };
-
     });

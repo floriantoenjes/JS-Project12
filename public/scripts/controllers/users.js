@@ -2,10 +2,10 @@
 
 angular.module("app")
 
-    .controller("UsersController", function ($location, $scope, authenticationService) {
+    .controller("UsersController", function ($location, $scope, userService) {
 
         // Initialize Data
-        authenticationService.getAllUsers(function (users) {
+        userService.getAllUsers(function (users) {
             $scope.users = users
         });
 

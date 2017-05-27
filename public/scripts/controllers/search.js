@@ -2,12 +2,12 @@
 
 angular.module("app")
 
-    .controller("SearchController", function ($location, $scope, authenticationService, dataService) {
+    .controller("SearchController", function ($location, $scope, authenticationService, dataService, favoriteService) {
 
         // Initialize Data
         $scope.currentUser = authenticationService.currentUser();
 
-        authenticationService.getMyFavorites(function (favorites) {
+        favoriteService.getMyFavorites(function (favorites) {
             $scope.favoriteIds = getAlbumIds(favorites);
         });
 
