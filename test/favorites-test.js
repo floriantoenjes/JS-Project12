@@ -107,7 +107,6 @@ describe("favorite routes", function () {
             .set("Authorization", "Bearer " + token)
             .expect(200)
             .end(function (error, response) {
-                console.log(response.body);
                 assert.equal(response.body[0]._id, "6hmmX5UP4rIvOpGSaPerV8");
                 assert.equal(response.body.length, 1);
                 done();
