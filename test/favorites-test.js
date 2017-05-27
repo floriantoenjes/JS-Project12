@@ -94,7 +94,15 @@ describe("favorite routes", function () {
     });
 
     it("should get a favorite", function (done) {
-        done();
+        request(server)
+            .get(`${favoritesPath}`)
+            .set("Authorization", "Bearer " + token)
+            .expect(200)
+            .end(function (error, response) {
+                assert.equal(response.body.length, 1);
+                done();
+            });
+
     });
 
     it("should remove a favorite", function (done) {
