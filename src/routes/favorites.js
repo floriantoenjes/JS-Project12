@@ -51,9 +51,9 @@ router.post("/", auth, function (req, res, next) {
     });
 });
 
-router.delete("/:id", auth, function (req, res, next) {
+router.delete("/:soundtrackId", auth, function (req, res, next) {
 
-    Soundtrack.findById(req.params.id, function (error, soundtrack) {
+    Soundtrack.findById(req.params.soundtrackId, function (error, soundtrack) {
         if (error) {
             return next(error);
         } else if (!soundtrack) {
