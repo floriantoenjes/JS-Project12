@@ -2,7 +2,7 @@
 
 angular.module("app")
 
-    .controller("MyFavoritesController", function ($scope, authenticationService, favoriteService) {
+    .controller("MyFavoritesController", function ($scope, favoriteService) {
 
         // Initialize Data
         favoriteService.getMyFavorites(function (albums) {
