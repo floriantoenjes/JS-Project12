@@ -2,6 +2,7 @@
 
 const request = require("supertest");
 const User = require("../src/models/user");
+const Soundtrack = require("../src/models/soundtrack");
 const assert = require("assert");
 
 describe("favorite routes", function () {
@@ -88,7 +89,12 @@ describe("favorite routes", function () {
                 assert.equal(response.body.n, 1);
                 User.findOne({email: "user@test.com"}, function (error, user) {
                     assert.equal(user.favorites.length, 1);
-                    done();
+                }).then(function (user) {
+                    Soundtrack.findById("6hmmX5UP4rIvOpGSaPerV8").then(function (soundtrack) {
+                        assert(soundtrack);
+                        done();
+                    });
+
                 });
             });
     });
