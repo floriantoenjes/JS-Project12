@@ -7,18 +7,12 @@ const assert = require("assert");
 describe("user routes", function () {
     let server;
     let token = "";
-    let testUser2Id;
 
     const kinofyPath = "/api/v1/kinofy";
     const usersPath = "/api/v1/users";
 
     const testUser = {
         email: "user@test.com",
-        password: "password"
-    };
-
-    const testUser2 = {
-        email: "user2@test.com",
         password: "password"
     };
 
@@ -31,23 +25,14 @@ describe("user routes", function () {
             }
 
         }).then(function () {
-            const user2 = new User(testUser2);
-
-            user2.save(function (error, user) {
-                if (error) {
-                    throw error;
-                }
-                testUser2Id = user._id;
-            }).then(function () {
-                request(server)
-                    .post(`${usersPath}/register`)
-                    .send(testUser)
-                    .end(function (error, res) {
-                        const result = JSON.parse(res.text);
-                        token = result.token;
-                        done();
-                    });
-            });
+            request(server)
+                .post(`${usersPath}/register`)
+                .send(testUser)
+                .end(function (error, res) {
+                    const result = JSON.parse(res.text);
+                    token = result.token;
+                    done();
+                });
         });
 
 
