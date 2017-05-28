@@ -5,15 +5,11 @@ angular.module("app")
     .service("favoriteService", function ($http, authenticationService, userService) {
 
         this.getMyFavorites = function (callback) {
-            $http.get("/api/v1/kinofy/favorites/", {
-                headers: {
-                    Authorization: "Bearer " + authenticationService.getToken()
-                }
-            }).then(function (response) {
-                const albums = response.data;
-
-                callback(albums);
-            });
+            $http.get("/api/v1/kinofy/favorites/", authenticationService.getAuthentication())
+                .then(function (response) {
+                    const albums = response.data;
+                    callback(albums);
+                });
         };
 
 
@@ -25,23 +21,17 @@ angular.module("app")
 
 
         this.addFavorite = function (album, callback) {
-            $http.post("/api/v1/kinofy/favorites", album, {
-                headers: {
-                    Authorization: "Bearer " + authenticationService.getToken()
-                }
-            }).then(function (response) {
+            $http.post("/api/v1/kinofy/favorites", album, authenticationService.getAuthentication()
+            ).then(function (response) {
                 callback(null, response);
             }).catch(callback);
         };
 
         this.removeFavorite = function (albumId, callback) {
-            $http.delete(`/api/v1/kinofy/favorites/${albumId}`, {
-                headers: {
-                    Authorization: "Bearer " + authenticationService.getToken()
-                }
-            }).then(function (response) {
-                callback(null, response);
-            }).catch(callback);
+            $http.delete(`/api/v1/kinofy/favorites/${albumId}`, authenticationService.getAuthentication())
+                .then(function (response) {
+                    callback(null, response);
+                }).catch(callback);
 
         };
     });

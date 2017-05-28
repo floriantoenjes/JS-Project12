@@ -14,6 +14,14 @@ angular.module("app")
             return $window.localStorage["mean-token"];
         };
 
+        this.getAuthentication = function () {
+            return {
+                headers: {
+                    Authorization: "Bearer " + vm.getToken()
+                }
+            };
+        };
+
         this.register = function (user, callback) {
             $http.post("/api/v1/users/register", user).then(function (response) {
                 vm.saveToken(response.data.token);
