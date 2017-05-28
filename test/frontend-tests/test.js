@@ -19,7 +19,8 @@ describe('My controller', function() {
         var controller = $controller('UsersController', {
             $scope: $scope
         });
-        dump("USERS", $scope.users);
+        $scope.$digest();
+        dump($scope.users);
     })
 
 });

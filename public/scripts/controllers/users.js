@@ -8,5 +8,4 @@ angular.module("app")
         userService.getAllUsers(function (users) {
             $scope.users = users
         });
-
     });
