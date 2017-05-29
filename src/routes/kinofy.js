@@ -13,26 +13,25 @@ router.get("/search/:query", auth, function (req, res, next) {
     doPOSTRequest("https://accounts.spotify.com/api/token", function (body) {
 
 
-
-    doGETRequest(`https://www.omdbapi.com/?t=${req.params.query}&apikey=${process.env.OMDBKEY}`, (error, movie) => {
-        if (error) {
-            return next(error);
-        } else if (movie.Response === "False") {
-            return next();
-        }
-
-        doGETRequest(`https://api.spotify.com/v1/search?q=${movie.Title}&type=album&limit=5&offset=0`, (error, soundtracks) => {
+        doGETRequest(`https://www.omdbapi.com/?t=${req.params.query}&apikey=${process.env.OMDBKEY}`, (error, movie) => {
             if (error) {
                 return next(error);
+            } else if (movie.Response === "False") {
+                return next();
             }
 
-            return res.json({
-                movie: movie,
-                soundtracks: soundtracks
-            });
-        });
+            doGETRequest(`https://api.spotify.com/v1/search?q=${movie.Title}&type=album&limit=5&offset=0`, (error, soundtracks) => {
+                if (error) {
+                    return next(error);
+                }
 
-    });
+                return res.json({
+                    movie: movie,
+                    soundtracks: soundtracks
+                });
+            });
+
+        });
 
     });
 });
@@ -56,7 +55,7 @@ function doPOSTRequest(url, callback) {
         body: formData
     };
 
-    request(options, function(err, res, body) {
+    request(options, function (err, res, body) {
         if (res && (res.statusCode === 200 || res.statusCode === 201)) {
             console.log(body);
             callback(body);
