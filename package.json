@@ -5,7 +5,8 @@
   "main": "src/app.js",
   "scripts": {
     "start": "nodemon src/index.js",
-    "test": "mocha"
+    "test": "mocha",
+    "testFrontend": "karma start karma.conf.js"
   },
   "engines": {
     "node": "6.9.5"

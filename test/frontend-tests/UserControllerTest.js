@@ -1,7 +1,7 @@
 'use strict';
 
 describe('UsersController', function () {
-    var $controller, $scope;
+    let $controller, $scope;
 
     beforeEach(module('app'));
 
@@ -11,7 +11,7 @@ describe('UsersController', function () {
     }));
 
     it("should initialize users", inject(function ($httpBackend) {
-        var controller = $controller('UsersController', {
+        let controller = $controller('UsersController', {
             $scope: $scope
         });
         $httpBackend.whenGET("/api/v1/users").respond([
