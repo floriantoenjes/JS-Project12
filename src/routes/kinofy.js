@@ -12,12 +12,21 @@ router.get("/search/:query", auth, function (req, res, next) {
     console.log("IN");
     getToken(function (access_token) {
 
+        doGETRequest(`https://www.omdbapi.com/?t=${req.params.query}&apikey=${process.env.OMDBKEY}`, {},
+            function (response) {
+                const movie = JSON.parse(response);
 
+            doGETRequest(`https://api.spotify.com/v1/search?q=${movie.Title}&type=album&limit=5&offset=0`, {
+                "Authorization": `Bearer ${access_token}`
+            }, function (response) {
+                const albums = JSON.parse(response);
+                console.log("ALBUMS", albums);
+                return res.json({
+                    movie: movie,
+                    soundtracks: albums
+                })
+            });
 
-        doGETRequest("https://api.spotify.com/v1/search?q=${movie.Title}&type=album&limit=5&offset=0", {
-            "Authorization": `Bearer ${access_token}`
-        }, function (albums) {
-            res.send();
         });
 
 
@@ -41,7 +50,7 @@ router.get("/search/:query", auth, function (req, res, next) {
         //
         // });
 
-        res.send();
+        // res.send();
     });
 });
 
@@ -80,7 +89,6 @@ function doGETRequest(url, headers, callback) {
 
     request.get(options, function (err, res, body) {
         if (res && (res.statusCode === 200 || res.statusCode === 201)) {
-            console.log(body);
             callback(body);
         } else {
             console.log(body);
