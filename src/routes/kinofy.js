@@ -10,27 +10,31 @@ const router = express.Router();
 
 router.get("/search/:query", auth, function (req, res, next) {
     console.log("IN");
-    doPOSTRequest("abc", function () {});
+    doPOSTRequest("https://accounts.spotify.com/api/token", function (body) {
 
-    // doGETRequest(`https://www.omdbapi.com/?t=${req.params.query}&apikey=${process.env.OMDBKEY}`, (error, movie) => {
-    //     if (error) {
-    //         return next(error);
-    //     } else if (movie.Response === "False") {
-    //         return next();
-    //     }
-    //
-    //     doGETRequest(`https://api.spotify.com/v1/search?q=${movie.Title}&type=album&limit=5&offset=0`, (error, soundtracks) => {
-    //         if (error) {
-    //             return next(error);
-    //         }
-    //
-    //         return res.json({
-    //             movie: movie,
-    //             soundtracks: soundtracks
-    //         });
-    //     });
-    //
-    // });
+
+
+    doGETRequest(`https://www.omdbapi.com/?t=${req.params.query}&apikey=${process.env.OMDBKEY}`, (error, movie) => {
+        if (error) {
+            return next(error);
+        } else if (movie.Response === "False") {
+            return next();
+        }
+
+        doGETRequest(`https://api.spotify.com/v1/search?q=${movie.Title}&type=album&limit=5&offset=0`, (error, soundtracks) => {
+            if (error) {
+                return next(error);
+            }
+
+            return res.json({
+                movie: movie,
+                soundtracks: soundtracks
+            });
+        });
+
+    });
+
+    });
 });
 
 function doPOSTRequest(url, callback) {
@@ -43,7 +47,7 @@ function doPOSTRequest(url, callback) {
     const formData = querystring.stringify(form);
 
     const options = {
-        url: "https://accounts.spotify.com/api/token",
+        url: url,
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -55,6 +59,7 @@ function doPOSTRequest(url, callback) {
     request(options, function(err, res, body) {
         if (res && (res.statusCode === 200 || res.statusCode === 201)) {
             console.log(body);
+            callback(body);
         } else {
             console.log("error");
             console.log(body);
