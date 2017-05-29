@@ -28,29 +28,6 @@ router.get("/search/:query", auth, function (req, res, next) {
             });
 
         });
-
-
-        // doGETRequest(`https://www.omdbapi.com/?t=${req.params.query}&apikey=${process.env.OMDBKEY}`, (error, movie) => {
-        //     if (error) {
-        //         return next(error);
-        //     } else if (movie.Response === "False") {
-        //         return next();
-        //     }
-        //
-        //     doGETRequest(`https://api.spotify.com/v1/search?q=${movie.Title}&type=album&limit=5&offset=0`, (error, soundtracks) => {
-        //         if (error) {
-        //             return next(error);
-        //         }
-        //
-        //         return res.json({
-        //             movie: movie,
-        //             soundtracks: soundtracks
-        //         });
-        //     });
-        //
-        // });
-
-        // res.send();
     });
 });
 
@@ -62,7 +39,7 @@ function getToken(callback) {
         url: "https://accounts.spotify.com/api/token",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Basic YmUxYTM0NDJiZTNlNGVjNzg1ODBmMzNiZGI5YTAwODk6MzgzZjQ1M2I2M2YwNDYxOWIxNjQ3NTE1OWFjNWQ4OGY="
+            "Authorization": "Basic " + (new Buffer(process.env.CLIENT_KEY + ":" + process.env.CLIENT_SECRET).toString("base64"))
         },
         form: {
             grant_type: "client_credentials"
