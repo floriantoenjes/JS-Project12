@@ -21,7 +21,7 @@ angular.module("app")
 
         $scope.removeFavorite = function (album) {
             favoriteService.removeFavorite(album.id, function (error, response) {
-                $scope.favoriteIds.splice($scope.favorites.indexOf(album.id), 1);
+                $scope.favoriteIds.splice($scope.favoriteIds.indexOf(album.id), 1);
             });
         };
 
