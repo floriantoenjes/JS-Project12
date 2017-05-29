@@ -11,8 +11,12 @@ router.get("/search/:query", auth, function (req, res, next) {
     const spotifyCredentials = (new Buffer(process.env.CLIENT_KEY + ":" + process.env.CLIENT_SECRET).toString("base64"));
 
     doPOSTRequest("https://accounts.spotify.com/api/token",
-        {"Content-Type": "application/x-www-form-urlencoded", "Authorization": "Basic " + spotifyCredentials},
-        {grant_type: "client_credentials"}, function (access_token) {
+        {
+            "Content-Type": "application/x-www-form-urlencoded", "Authorization": "Basic " + spotifyCredentials
+        },
+        {
+            grant_type: "client_credentials"
+        }, function (access_token) {
 
 
             doGETRequest(`https://www.omdbapi.com/?t=${req.params.query}&apikey=${process.env.OMDBKEY}`, {},
