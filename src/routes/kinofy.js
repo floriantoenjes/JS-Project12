@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.get("/search/:query", auth, function (req, res, next) {
     console.log("IN");
-    doPOSTRequest("https://accounts.spotify.com/api/token", function (body) {
+    getToken(function (body) {
 
 
         doGETRequest(`https://www.omdbapi.com/?t=${req.params.query}&apikey=${process.env.OMDBKEY}`, (error, movie) => {
@@ -36,7 +36,7 @@ router.get("/search/:query", auth, function (req, res, next) {
     });
 });
 
-function doPOSTRequest(url, callback) {
+function getToken(callback) {
     console.log("in");
 
     const form = {
@@ -46,7 +46,7 @@ function doPOSTRequest(url, callback) {
     const formData = querystring.stringify(form);
 
     const options = {
-        url: url,
+        url: "https://accounts.spotify.com/api/token",
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
