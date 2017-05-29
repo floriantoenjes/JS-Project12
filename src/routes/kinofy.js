@@ -47,7 +47,6 @@ function getToken(callback) {
 
     const options = {
         url: "https://accounts.spotify.com/api/token",
-        method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
             "Authorization": "Basic YmUxYTM0NDJiZTNlNGVjNzg1ODBmMzNiZGI5YTAwODk6MzgzZjQ1M2I2M2YwNDYxOWIxNjQ3NTE1OWFjNWQ4OGY="
@@ -55,7 +54,7 @@ function getToken(callback) {
         body: formData
     };
 
-    request(options, function (err, res, body) {
+    request.post(options, function (err, res, body) {
         if (res && (res.statusCode === 200 || res.statusCode === 201)) {
             console.log(body);
             callback(body);
