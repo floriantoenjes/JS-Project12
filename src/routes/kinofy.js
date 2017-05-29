@@ -37,13 +37,8 @@ router.get("/search/:query", auth, function (req, res, next) {
 });
 
 function getToken(callback) {
+    // ToDo: Remove log statements and unused modules
     console.log("in");
-
-    const form = {
-        grant_type: "client_credentials"
-    };
-
-    const formData = querystring.stringify(form);
 
     const options = {
         url: "https://accounts.spotify.com/api/token",
@@ -51,7 +46,9 @@ function getToken(callback) {
             "Content-Type": "application/x-www-form-urlencoded",
             "Authorization": "Basic YmUxYTM0NDJiZTNlNGVjNzg1ODBmMzNiZGI5YTAwODk6MzgzZjQ1M2I2M2YwNDYxOWIxNjQ3NTE1OWFjNWQ4OGY="
         },
-        body: formData
+        form: {
+            grant_type: "client_credentials"
+        }
     };
 
     request.post(options, function (err, res, body) {
