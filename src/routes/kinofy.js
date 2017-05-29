@@ -13,7 +13,7 @@ router.get("/search/:query", auth, function (req, res, next) {
             if (error) {
                 return next(error);
             }
-            if (movie.Error === "Movie not found!") {
+            if (!movie || movie.Error === "Movie not found!") {
                 const error = new Error(movie.Error);
                 error.status = 404;
                 return next(error);
