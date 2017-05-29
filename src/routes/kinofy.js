@@ -4,7 +4,6 @@ const auth = require("../auth");
 const express = require("express");
 const https = require("https");
 const request = require("request");
-const querystring = require("querystring");
 
 const router = express.Router();
 
@@ -28,13 +27,11 @@ router.get("/search/:query", auth, function (req, res, next) {
                         return next(error);
                     }
 
-                    console.log("MOVIE", movie);
 
                     doGETRequest(`https://api.spotify.com/v1/search?q=${movie.Title}&type=album&limit=5&offset=0`, {
                         "Authorization": `Bearer ${access_token}`
                     }, function (response) {
                         const albums = JSON.parse(response);
-                        console.log("ALBUMS", albums);
                         return res.json({
                             movie: movie,
                             soundtracks: albums
@@ -46,8 +43,6 @@ router.get("/search/:query", auth, function (req, res, next) {
 });
 
 function doPOSTRequest(url, headers, form, callback) {
-    // ToDo: Remove log statements and unused modules
-    console.log("in");
 
     const options = {
         url: url,
@@ -58,11 +53,9 @@ function doPOSTRequest(url, headers, form, callback) {
     request.post(options, function (err, res, body) {
         if (res && (res.statusCode === 200 || res.statusCode === 201)) {
             const json = JSON.parse(body);
-            console.log(json.access_token);
             callback(json.access_token);
         } else {
-            console.log("error");
-            console.log(body);
+            return next(err);
         }
     });
 }
@@ -77,7 +70,6 @@ function doGETRequest(url, headers, callback) {
         if (res && (res.statusCode === 200 || res.statusCode === 201)) {
             callback(body);
         } else {
-            console.log(body);
             return next(err);
         }
     });
