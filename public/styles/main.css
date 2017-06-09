@@ -190,3 +190,7 @@ body {
 .btn {
     border-radius: 0;
 }
+
+.favorite-button {
+    margin-left: 0.25em;
+}
