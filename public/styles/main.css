@@ -10,7 +10,8 @@ body {
 
 #logo {
     text-align: center;
-    padding: 1em 1em 0 1em;
+    /*padding: 1em 1em 0 1em;*/
+    padding: 0.5em 1em 0 1em;
     font-family: Raleway, sans-serif;
     font-weight: bold;
     font-size: 4em;
@@ -143,5 +144,25 @@ body {
 
 #favorite-wrapper h2 {
     margin: 1em 0;
+    font-family: Raleway, sans-serif;
+}
+
+.navbar-default {
+    background-color: black;
+    border: none;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
+    font-family: Raleway, sans-serif;
+}
+
+.search-form {
+    float: right;
+    color: black;
+    margin-top: 0.75em;
+}
+
+.navbar-brand {
     font-family: Raleway, sans-serif;
 }
