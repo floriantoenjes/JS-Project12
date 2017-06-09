@@ -10,6 +10,27 @@ body {
     height: 98%;
 }
 
+/**
+* General Styles
+ */
+
+.form-control {
+    margin: 1em;
+    border-radius: 0;
+}
+
+.btn {
+    border-radius: 0;
+}
+
+/**
+* Header
+*/
+
+.header-margin {
+    padding-top: 3.5em;
+}
+
 #logo {
     text-align: center;
     padding: 0.2em 1em 0 1em;
@@ -17,6 +38,44 @@ body {
     font-weight: bold;
     font-size: 4em;
 }
+
+#subtitle {
+    margin: 0 auto 1em auto;
+    text-align: center;
+}
+
+/**
+* Navbar
+*/
+
+.navbar-nav {
+    background-color: black;
+    border: none;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
+    font-family: Raleway, sans-serif;
+}
+
+.navbar-brand {
+    font-family: Raleway, sans-serif;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #C9302C;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover {
+    background-color: transparent;
+    color: #C9302C;
+}
+
+/**
+* Wrappers
+ */
 
 #wrapper {
     width: 80%;
@@ -58,6 +117,10 @@ body {
     margin-right: 1em;
 }
 
+/**
+* Search Form
+ */
+
 #search-form {
     margin: 0 auto;
     text-align: center;
@@ -67,6 +130,20 @@ body {
     font-size: 1.3em;
     padding-bottom: 0.3em;
 }
+
+/**
+* Error
+ */
+
+.error {
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+/**
+* Login
+ */
 
 #login-wrapper {
     width: 25em;
@@ -86,16 +163,9 @@ body {
     color: dodgerblue;
 }
 
-.error {
-    color: white;
-    text-align: center;
-    font-weight: bold;
-}
-
-.form-control {
-    margin: 1em;
-    border-radius: 0;
-}
+/**
+* Registration
+ */
 
 #register-wrapper {
     width: 25em;
@@ -108,11 +178,6 @@ body {
     margin-left: 1em;
 }
 
-#subtitle {
-    margin: 0 auto 1em auto;
-    text-align: center;
-}
-
 #search-field {
     width: 20em;
     margin: 0 auto
@@ -123,9 +188,9 @@ body {
     padding-right: 1.5em;
 }
 
-.btn {
-    border-radius: 0;
-}
+/**
+* Favorite Styles
+ */
 
 .favorite-button {
     margin-left: 0.25em;
@@ -142,39 +207,6 @@ body {
     margin: 1em 0;
     font-family: Raleway, sans-serif;
     padding: 1em;
-}
-
-/**
-* Navbar
-*/
-
-.navbar-nav {
-    background-color: black;
-    border: none;
-}
-
-.navbar-default .navbar-nav > li > a {
-    color: white;
-    font-family: Raleway, sans-serif;
-}
-
-.navbar-brand {
-    font-family: Raleway, sans-serif;
-}
-
-.navbar-default .navbar-nav > li > a:hover {
-    color: #C9302C;
-}
-
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:focus,
-.navbar-default .navbar-nav > .active > a:hover {
-    background-color: transparent;
-    color: #C9302C;
-}
-
-.header-margin {
-    padding-top: 3.5em;
 }
 
 /**
