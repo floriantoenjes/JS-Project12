@@ -28,6 +28,10 @@ body {
     margin-top: 3em;
 }
 
+/**
+* Movie
+ */
+
 #movie {
     padding: 5em 0;
 }
@@ -41,6 +45,10 @@ body {
     padding-bottom: 6.5em;
     display: block;
 }
+
+/**
+* Albums
+ */
 
 #albums {
     padding: 5em;
@@ -86,6 +94,7 @@ body {
 
 .form-control {
     margin: 1em;
+    border-radius: 0;
 }
 
 #register-wrapper {
@@ -112,10 +121,6 @@ body {
 #go-button {
     padding-left: 1.5em;
     padding-right: 1.5em;
-}
-
-.form-control {
-    border-radius: 0;
 }
 
 .btn {
