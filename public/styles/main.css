@@ -178,3 +178,7 @@ body {
     background-color: transparent;
     color: #C9302C;
 }
+
+.header-margin {
+    padding-top: 3.5em;
+}
