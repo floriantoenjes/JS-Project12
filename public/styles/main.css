@@ -166,3 +166,15 @@ body {
 .navbar-brand {
     font-family: Raleway, sans-serif;
 }
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #C9302C;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover {
+    /*text-decoration: underline;*/
+    background-color: transparent;
+    color: #C9302C;
+}
