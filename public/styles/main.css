@@ -104,25 +104,6 @@ body {
     text-align: center;
 }
 
-@media screen and (max-width: 1650px) {
-    #movie-info {
-    clear: left
-}
-    #logo {
-        font-size: 3em;
-    }
-}
-
-@media screen and (max-width: 1300px) {
-    #poster {
-        margin-right: 5em;
-    }
-}
-
-#search-form {
-    text-align: center;
-}
-
 #search-field {
     width: 20em;
     margin: 0 auto
@@ -133,7 +114,16 @@ body {
     padding-right: 1.5em;
 }
 
+.form-control {
+    border-radius: 0;
+}
+
+.btn {
+    border-radius: 0;
+}
+
 .favorite-button {
+    margin-left: 0.25em;
     font-size: 0.75em;
     float: right;
 }
@@ -146,7 +136,12 @@ body {
 #favorite-wrapper h2 {
     margin: 1em 0;
     font-family: Raleway, sans-serif;
+    padding: 1em;
 }
+
+/**
+* Navbar
+*/
 
 .navbar-nav {
     background-color: black;
@@ -156,12 +151,6 @@ body {
 .navbar-default .navbar-nav > li > a {
     color: white;
     font-family: Raleway, sans-serif;
-}
-
-.search-form {
-    float: right;
-    color: black;
-    margin-top: 0.75em;
 }
 
 .navbar-brand {
@@ -175,7 +164,6 @@ body {
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:focus,
 .navbar-default .navbar-nav > .active > a:hover {
-    /*text-decoration: underline;*/
     background-color: transparent;
     color: #C9302C;
 }
@@ -184,18 +172,21 @@ body {
     padding-top: 3.5em;
 }
 
-.form-control {
-    border-radius: 0;
+/**
+* Media Queries
+*/
+
+@media screen and (max-width: 1650px) {
+    #movie-info {
+        clear: left
+    }
+    #logo {
+        font-size: 3em;
+    }
 }
 
-.btn {
-    border-radius: 0;
-}
-
-.favorite-button {
-    margin-left: 0.25em;
-}
-
-#favorite-wrapper h2 {
-    padding: 1em;
+@media screen and (max-width: 1300px) {
+    #poster {
+        margin-right: 5em;
+    }
 }
