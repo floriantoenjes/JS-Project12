@@ -194,3 +194,7 @@ body {
 .favorite-button {
     margin-left: 0.25em;
 }
+
+#favorite-wrapper h2 {
+    padding: 1em;
+}
