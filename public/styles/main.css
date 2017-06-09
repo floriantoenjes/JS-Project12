@@ -1,3 +1,5 @@
+/* ToDo: Clean up the CSS */
+
 html,
 body {
     font-family: sans-serif;
@@ -10,7 +12,6 @@ body {
 
 #logo {
     text-align: center;
-    /*padding: 1em 1em 0 1em;*/
     padding: 0.2em 1em 0 1em;
     font-family: Raleway, sans-serif;
     font-weight: bold;
