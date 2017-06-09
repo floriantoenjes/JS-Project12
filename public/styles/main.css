@@ -182,3 +182,11 @@ body {
 .header-margin {
     padding-top: 3.5em;
 }
+
+.form-control {
+    border-radius: 0;
+}
+
+.btn {
+    border-radius: 0;
+}
