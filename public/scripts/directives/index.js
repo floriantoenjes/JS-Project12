@@ -21,4 +21,11 @@ angular.module("app")
                 });
             }
         };
-    }]);
+    }])
+
+    .directive("navbar", function () {
+        return {
+            replace: true,
+            templateUrl: "templates/nav.html"
+        };
+    });

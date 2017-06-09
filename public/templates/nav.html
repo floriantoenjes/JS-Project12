@@ -1,0 +1,9 @@
+<nav class="navbar navbar-default" ng-controller="HeaderController">
+    <ul class="nav navbar-nav">
+        <li><a ng-href="/#!" class="navbar-brand">Kinofy</a></li>
+        <li ng-class="{ active: isActive('/')}"><a ng-href="/#!">Search</a></li>
+        <li ng-class="{ active: isActive('/favorites')}"><a ng-href="/#!/favorites">My Favorites</a></li>
+        <li ng-class="{ active: isActive('/users')}"><a ng-href="/#!/users">Users</a></li>
+        <li ng-class="{ active: isActive('/logout')}"><a href="#" ng-controller="LogoutController" ng-click="logout()">Logout</a></li>
+    </ul>
+</nav>

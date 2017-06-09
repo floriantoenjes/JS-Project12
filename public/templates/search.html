@@ -1,12 +1,13 @@
+<navbar></navbar>
+
+<h1 id="logo">Kinofy</h1>
+<h3 id="subtitle">Find the right Movie Soundtrack</h3>
 <div id="wrapper" class="container">
     <p ng-if="error" class="error">{{error.message}}</p>
     <form ng-submit="search(query)" id="search-form" class="form-inline">
         <input ng-disabled="disableSearch" ng-model="query" type="text" size="50" placeholder="Enter a movie title..." id="search-field"
                focus-me="true" class="form-control"/>
         <button ng-disabled="disableSearch" type="submit" class="btn btn-primary" id="go-button">Go</button>
-        <button ng-controller="LogoutController" type="button" ng-click="logout()" class="btn btn-danger" id="logout">Logout</button>
-        <a ng-href="/#!/favorites">My Favorites</a>
-        <a ng-href="/#!/users">Users</a>
     </form>
     <div ng-if="results.movie" id="movie-wrapper" class="row">
         <div ng-if="results.movie.Poster !== 'N/A'" id="poster" class="col-md-4"><img ng-src="{{results.movie.Poster}}"/></div>
