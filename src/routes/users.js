@@ -27,6 +27,9 @@ router.get("/:userId", auth, function (req, res, next) {
             res.status(404);
             return res.send();
         }
+        user.favorites.sort((fav1, fav2) => {
+            return fav1.name.localeCompare(fav2.name)
+        });
         return res.json(user);
     });
 });
