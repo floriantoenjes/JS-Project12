@@ -17,7 +17,7 @@ router.get("/", auth, function (req, res, next) {
         }
 
         if (user && user.favorites) {
-            user.favorites = user.favorites.sort((fav1, fav2) => {
+            user.favorites.sort((fav1, fav2) => {
                 return fav1.name.localeCompare(fav2.name)
             });
             return res.send(user.favorites);
